@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samrat's Web Dev Hub - Complete Learning System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1a1a2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #0f172a 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           LOGO CSS (INTEGRATED CORRECTLY)
+           ========================================= */
+        
+        /* Base Structure */
+        .samrat-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem 3rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none; /* Fix for link underline */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Hover Effects */
+        .samrat-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 80px rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+
+        /* Shimmer Animation Background */
+        .samrat-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            animation: shimmer 3s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Icon Wrapper */
+        .logo-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: rotate 20s linear infinite;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
+        }
+
+        /* Rotating Border Effect */
+        .logo-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Inner Dark Circle */
+        .logo-icon-inner {
+            width: 70px;
+            height: 70px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotate 10s linear infinite reverse;
+        }
+
+        /* The Icon Itself */
+        .logo-icon-inner i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Text Styling */
+        .samrat-name {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            line-height: 1;
+            text-transform: uppercase;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.5)); }
+            to { filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.8)); }
+        }
+
+        .samrat-tagline {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin: 0.5rem 0 0 0;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* --- MINI VERSION (FOR NAVBAR) --- */
+        .samrat-logo-mini {
+            gap: 0.75rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 50px;
+        }
+        .samrat-logo-mini .logo-icon-wrapper { width: 40px; height: 40px; }
+        .samrat-logo-mini .logo-icon-inner { width: 34px; height: 34px; }
+        .samrat-logo-mini .logo-icon-inner i { font-size: 1.2rem; }
+        .samrat-logo-mini .samrat-name { font-size: 1.8rem; }
+        .samrat-logo-mini .samrat-tagline { display: none; }
+
+        /* --- COMPACT VERSION (FOR FOOTER) --- */
+        .samrat-logo-compact {
+            padding: 1rem 2rem;
+            gap: 1rem;
+        }
+        .samrat-logo-compact .logo-icon-wrapper { width: 50px; height: 50px; }
+        .samrat-logo-compact .logo-icon-inner { width: 42px; height: 42px; }
+        .samrat-logo-compact .logo-icon-inner i { font-size: 1.5rem; }
+        .samrat-logo-compact .samrat-name { font-size: 2.5rem; }
+        .samrat-logo-compact .samrat-tagline { font-size: 0.875rem; }
+
+
+        /* =========================================
+           MAIN SITE STYLES
+           ========================================= */
+
+        /* Navigation Bar */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            margin: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        /* Progress Section */
+        .progress-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 20px;
+        }
+
+        .progress-bar-custom {
+            height: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            font-weight: bold;
+        }
+
+        /* Category Cards */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .badge-custom {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 5px 0 0;
+        }
+
+        .badge-beginner { background: var(--success); color: white; }
+        .badge-intermediate { background: var(--primary); color: white; }
+        .badge-advanced { background: var(--danger); color: white; }
+        .badge-all { background: #6b7280; color: white; }
+
+        /* Back Button */
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* Course Page Styles */
+        .course-header {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .course-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .course-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px;
+        }
+
+        .placeholder-box {
+            background: rgba(245, 158, 11, 0.1);
+            border: 2px solid rgba(245, 158, 11, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .placeholder-box h3 {
+            color: #fbbf24;
+            margin-bottom: 15px;
+        }
+
+        /* Primary Button */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .pill-button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .pill-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .samrat-logo {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .course-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container-fluid px-4">
+            <!-- NAVBAR LOGO (Corrected Structure: Mini) -->
+            <a class="samrat-logo samrat-logo-mini" href="#" onclick="showPage('home')">
+                <div class="samrat-logo-icon">
+                    <div class="logo-icon-wrapper">
+                        <div class="logo-icon-inner">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="samrat-logo-text">
+                    <h1 class="samrat-name">Samrat</h1>
+                </div>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="downloadPage()"><i class="fas fa-download"></i> Download</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="homePage" class="page active">
+        <div class="container-fluid">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="d-flex justify-content-center mb-4">
+                    <!-- HERO LOGO (Corrected Structure: Full) -->
+                    <div class="samrat-logo">
+                        <div class="samrat-logo-icon">
+                            <div class="logo-icon-wrapper">
+                                <div class="logo-icon-inner">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="samrat-logo-text">
+                            <h1 class="samrat-name">Samrat</h1>
+                            <p class="samrat-tagline">Code • Create • Conquer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>Web Development Mastery Hub</h1>
+                <p>Your complete guide from beginner to professional web developer</p>
+                <button class="btn btn-primary-custom" onclick="scrollToCategories()">
+                    Start Learning <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+
+            <!-- Progress Overview -->
+            <div class="progress-section">
+                <h3><i class="fas fa-chart-line"></i> Your Learning Journey</h3>
+                <div class="row mt-4">
+                    <div class="col-md-4 text-center mb-3">
+                        <h2 style="color: var(--primary);">85</h2>
+                        <p>Total Lessons</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <h2 style="color: var(--success);">0</h2>
+                        <p>Completed</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3">
+                        <h2 style="color: var(--warning);">0%</h2>
+                        <p>Progress</p>
+                    </div>
+                </div>
+                <div class="progress-bar-custom">
+                    <div class="progress-fill" style="width: 0%">0%</div>
+                </div>
+            </div>
+
+
+            <!-- Category Grid -->
+            <div id="categoriesSection">
+                <h2 class="text-center my-5">📚 Choose Your Learning Path</h2>
+                <div class="category-grid">
+                    <!-- Roadmap Card -->
+                    <a href="#" class="category-card" onclick="showPage('roadmap'); return false;">
+                        <div class="category-icon">🗺️</div>
+                        <h3>HTML Roadmap</h3>
+                        <p>10-step journey from HTML basics to API integration</p>
+                        <span class="badge-custom badge-beginner">Hand Craft</span>
+                        <span class="badge-custom badge-intermediate">Beginner</span>
+                    </a>
+                    <!-- Roadmap Card -->
+                    <a href="#" class="category-card" onclick="showPage('roadmap'); return false;">
+                        <div class="category-icon">🗺️</div>
+                        <h3>Learning Roadmap</h3>
+                        <p>10-step journey from HTML basics to API integration</p>
+                        <span class="badge-custom badge-beginner">Beginner</span>
+                        <span class="badge-custom badge-intermediate">Intermediate</span>
+                    </a>
+
+                    <!-- Interactive Tutorials Card -->
+                    <a href="#" class="category-card" onclick="showPage('tutorials'); return false;">
+                        <div class="category-icon">💻</div>
+                        <h3>Interactive Tutorials</h3>
+                        <p>Hands-on coding with live examples and instant feedback</p>
+                        <span class="badge-custom badge-intermediate">Intermediate</span>
+                    </a>
+
+                    <!-- CSS Mastery Card -->
+                    <a href="#" class="category-card" onclick="showPage('css'); return false;">
+                        <div class="category-icon">🎨</div>
+                        <h3>CSS Mastery</h3>
+                        <p>Variables, animations, grid, and advanced styling techniques</p>
+                        <span class="badge-custom badge-beginner">Beginner</span>
+                    </a>
+
+                    <!-- JavaScript Complete Card -->
+                    <a href="#" class="category-card" onclick="showPage('javascript'); return false;">
+                        <div class="category-icon">⚡</div>
+                        <h3>JavaScript Complete</h3>
+                        <p>From basics to advanced: async, APIs, and modern ES6+</p>
+                        <span class="badge-custom badge-intermediate">Intermediate</span>
+                    </a>
+
+                    <!-- JavaScript Functions Card -->
+                    <a href="#" class="category-card" onclick="showPage('functions'); return false;">
+                        <div class="category-icon">🔧</div>
+                        <h3>JavaScript Functions</h3>
+                        <p>Interactive demos showing real-world function applications</p>
+                        <span class="badge-custom badge-intermediate">Intermediate</span>
+                    </a>
+
+                    <!-- Modern Design Card -->
+                    <a href="#" class="category-card" onclick="showPage('design'); return false;">
+                        <div class="category-icon">✨</div>
+                        <h3>Modern Design 2024</h3>
+                        <p>Latest trends: glassmorphism, neumorphism, dark mode</p>
+                        <span class="badge-custom badge-intermediate">Intermediate</span>
+                    </a>
+
+                    <!-- API Integration Card -->
+                    <a href="#" class="category-card" onclick="showPage('api'); return false;">
+                        <div class="category-icon">🌐</div>
+                        <h3>API Integration</h3>
+                        <p>Fetch data, build backends, handle responses securely</p>
+                        <span class="badge-custom badge-advanced">Advanced</span>
+                    </a>
+
+                    <!-- Practice Projects Card -->
+                    <a href="#" class="category-card" onclick="showPage('projects'); return false;">
+                        <div class="category-icon">🚀</div>
+                        <h3>Practice Projects</h3>
+                        <p>Build 10+ real applications to master your skills</p>
+                        <span class="badge-custom badge-advanced">Advanced</span>
+                    </a>
+
+                    <!-- Code Examples Card -->
+                    <a href="#" class="category-card" onclick="showPage('code-examples'); return false;">
+                        <div class="category-icon">📝</div>
+                        <h3>Code Examples</h3>
+                        <p>Well-formatted, commented code ready to use</p>
+                        <span class="badge-custom badge-all">All Levels</span>
+                    </a>
+
+                    <!-- Downloadable Resources Card -->
+                    <a href="#" class="category-card" onclick="showPage('resources'); return false;">
+                        <div class="category-icon">📥</div>
+                        <h3>Downloadable Resources</h3>
+                        <p>PDF guides, cheat sheets, and reference materials</p>
+                        <span class="badge-custom badge-all">All Levels</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- ROADMAP PAGE -->
+    <div id="roadmapPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🗺️ HTML Design Roadmap</h1>
+            <p>Your complete 10-step journey from HTML basics to API integration</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <h3>📌 🎨 Modern HTML Design Tutorial</h3>
+               <button class="pill-button"  onclick="window.location.href='enhanced.html'">Open</button>
+           </div>
+        </div>
+    </div>
+
+    <!-- ROADMAP PAGE -->
+    <div id="roadmapPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🗺️ Website Design Roadmap</h1>
+            <p>Your complete 10-step journey from HTML basics to API integration</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <h3>📌 🎨 Modern Website Design Tutorial</h3>
+               <button class="pill-button"  onclick="window.location.href='website attractive.html'">Open</button>
+           </div>
+        </div>
+    </div>
+
+    <!-- TUTORIALS PAGE -->
+    <div id="tutorialsPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>💻 Interactive Tutorials</h1>
+            <p>Hands-on coding with live examples from beginner to advanced</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+               <h3>🎓 CSS Essential</h3> 
+            </div>
+           <button class="pill-button" onclick="window.location.href='ai toturial.html'">Open</button>
+        </div>
+    </div>
+
+    <!-- CSS PAGE -->
+    <div id="cssPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🎨 CSS Mastery</h1>
+            <p>Master CSS Variables, Gradients, Animations & Modern Techniques</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <h3>📌 CSS Mastery Content</h3>
+                 <div class="placeholder-box">
+               <h3>🎓 CSS Essential</h3>
+            </div>
+           <button class="pill-button" onclick="window.location.href='css.html'">Open</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT PAGE -->
+    <div id="javascriptPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>⚡ JavaScript Complete</h1>
+            <p>From basics to advanced: Variables, Functions, Arrays, Objects, Async & APIs</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <h3>📌 Complete JavaScript Tutorial</h3>
+                <div class="placeholder-box">
+                <h3>📌 JAVASCRIPT Basic</h3>
+                 <div class="placeholder-box">
+                <a href="jAVA SCRIPT"> <h3>🎓 OPEN     </h3> </a>
+            </div>
+                
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- FUNCTIONS PAGE -->
+    <div id="functionsPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🔧 JavaScript Functions</h1>
+            <p>Interactive demonstrations of functions making websites attractive</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <h3>📌 JavaScript Functions Tutorial</h3>
+                 <a href="javascript .html"> <h3>🎓 OPEN     </h3> </a>
+            </div>
+                
+        </div>
+    </div>
+
+    <!-- DESIGN PAGE -->
+    <div id="designPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>✨ Modern Design 2024</h1>
+            <p>Latest trends: Glassmorphism, Gradients, Animations & Modern UI</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <h3>📌 Modern Design Tutorial</h3>
+                <button class="pill-button" onclick="window.location.href='CompleteReAd HUB.html'">Open</button>
+                 <button class="pill-button" onclick="alert('Link to external file')">Open</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- API PAGE -->
+    <div id="apiPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🌐 API Integration</h1>
+            <p>Frontend & Backend: Fetch API, Async/Await, Node.js Server Setup</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <button class="pill-button" onclick="alert('Link to external file')">Open</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS PAGE -->
+    <div id="projectsPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🚀 Practice Projects</h1>
+            <p>Build real-world applications to master your skills</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <button class="pill-button" onclick="window.location.href='templete.html'">Open</button>
+                 <a href="name logo.HTML"> <h3>🎓 OPEN     </h3> </a>
+                <h3>📌 Practice Projects</h3>
+                 <a href="download btn.html"> <h3>🎓 OPEN     </h3> </a>
+                <p>This page will show step-by-step guides for building:</p>
+                <ul>
+                    <li>📝 Todo List App with localStorage</li>
+                    <li>🌤️ Weather Dashboard with API</li>
+                    <li>💼 Portfolio Website</li>
+                    <li>💬 Chat Application</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- CODE EXAMPLES PAGE -->
+    <div id="codeExamplesPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>📝 Code Examples</h1>
+            <p>Well-formatted, commented code snippets with detailed explanations</p>
+        </div>
+        <div class="course-content">
+            <div class="placeholder-box">
+                <h3>📌 Formatted Code Examples</h3>
+                <ul>
+                    <li>Example 1: CSS Variables - Easy to Read</li>
+                    <li>Example 2: CSS Gradients - Beautiful Backgrounds</li>
+                    <li>Example 3: CSS Animations - Make Things Move</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESOURCES PAGE -->
+    <div id="resourcesPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>📥 Downloadable Resources</h1>
+            <p>Cheat sheets, PDFs, and reference materials</p>
+        </div>
+        <div class="course-content">
+            <div class="alert alert-success" style="background: rgba(16, 185, 129, 0.1); border: 2px solid var(--success); color: white;">
+                <h4 class="alert-heading">✅ Available Resources:</h4>
+                <hr style="border-color: rgba(16, 185, 129, 0.3);">
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center gap-3 p-3" style="background: rgba(255,255,255,0.05); border-radius: 10px;">
+                            <i class="fas fa-file-pdf fa-2x" style="color: #ef4444;"></i>
+                            <div>
+                                <h6 class="mb-1">HTML Cheat Sheet</h6>
+                                <small class="text-muted">Quick reference for HTML tags</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="d-flex align-items-center gap-3 p-3" style="background: rgba(255,255,255,0.05); border-radius: 10px;">
+                            <i class="fas fa-file-code fa-2x" style="color: #3b82f6;"></i>
+                            <div>
+                                <h6 class="mb-1">CSS Properties Reference</h6>
+                                <small class="text-muted">Complete CSS properties guide</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary-custom" onclick="downloadAllResources()">
+                        <i class="fas fa-download"></i> Download All Resources
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="d-flex justify-content-center mb-3">
+            <!-- FOOTER LOGO (Compact Version) -->
+            <div class="samrat-logo-base logo-footer">
+                <div class="logo-icon-wrapper">
+                    <div class="logo-icon-inner">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="samrat-name-styled">SAMRAT</h1>
+                </div>
+            </div>
+        </div>
+        <p>&copy; 2024 Samrat's Web Development Hub. Built with ❤️ for aspiring developers</p>
+        <p style="color: #9ca3af;">Code • Create • Conquer</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Page Navigation System
+        function showPage(pageName) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            const selectedPage = document.getElementById(pageName + 'Page');
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse.classList.contains('show')) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                bsCollapse.hide();
+            }
+        }
+
+        function scrollToCategories() {
+            const categoriesSection = document.getElementById('categoriesSection');
+            if (categoriesSection) {
+                categoriesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function downloadPage() {
+            const confirmation = confirm('📥 Download Complete Learning Hub?');
+            if (confirmation) {
+                const htmlContent = document.documentElement.outerHTML;
+                const blob = new Blob([htmlContent], { type: 'text/html' });
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = 'samrat-learning-hub-complete.html';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            }
+        }
+
+        function downloadAllResources() {
+            alert('📦 Downloading all resources... (Simulated)');
+        }
+
+        window.addEventListener('popstate', function(event) {
+            if (event.state && event.state.page) {
+                showPage(event.state.page);
+            }
+        });
+    </script>
+</body>
+</html>

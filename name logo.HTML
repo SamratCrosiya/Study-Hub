@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samrat Logo - Reusable Component</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ========================================
+           LOGO COMPONENT STYLES - COPY THIS SECTION
+           ======================================== */
+        
+        .samrat-logo-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .samrat-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem 3rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .samrat-logo::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(139, 92, 246, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .samrat-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 80px rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.6);
+        }
+
+        .samrat-logo-icon {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            animation: rotate 20s linear infinite;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .logo-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        .logo-icon-inner {
+            width: 70px;
+            height: 70px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotate 10s linear infinite reverse;
+        }
+
+        .logo-icon-inner i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .samrat-logo-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .samrat-name {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.1em;
+            margin: 0;
+            text-transform: uppercase;
+            position: relative;
+            animation: textGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {
+                filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.5));
+            }
+            to {
+                filter: drop-shadow(0 0 20px rgba(236, 72, 153, 0.8));
+            }
+        }
+
+        .samrat-tagline {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin: 0.5rem 0 0 0;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Compact Version */
+        .samrat-logo-compact {
+            gap: 1rem;
+            padding: 1rem 2rem;
+        }
+
+        .samrat-logo-compact .logo-icon-wrapper {
+            width: 50px;
+            height: 50px;
+        }
+
+        .samrat-logo-compact .logo-icon-inner {
+            width: 42px;
+            height: 42px;
+        }
+
+        .samrat-logo-compact .logo-icon-inner i {
+            font-size: 1.5rem;
+        }
+
+        .samrat-logo-compact .samrat-name {
+            font-size: 2.5rem;
+        }
+
+        .samrat-logo-compact .samrat-tagline {
+            font-size: 0.875rem;
+        }
+
+        /* Mini Version (for navbar) */
+        .samrat-logo-mini {
+            gap: 0.75rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .samrat-logo-mini .logo-icon-wrapper {
+            width: 40px;
+            height: 40px;
+        }
+
+        .samrat-logo-mini .logo-icon-inner {
+            width: 34px;
+            height: 34px;
+        }
+
+        .samrat-logo-mini .logo-icon-inner i {
+            font-size: 1.2rem;
+        }
+
+        .samrat-logo-mini .samrat-name {
+            font-size: 1.8rem;
+        }
+
+        .samrat-logo-mini .samrat-tagline {
+            display: none;
+        }
+
+        /* ========================================
+           DEMO SECTION (NOT REQUIRED FOR COPY)
+           ======================================== */
+        
+        .demo-section {
+            margin: 3rem auto;
+            max-width: 1200px;
+        }
+
+        .demo-title {
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .demo-box {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .demo-label {
+            color: #c084fc;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .code-box {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .copy-btn:hover {
+            background: #2563eb;
+        }
+
+        @media (max-width: 768px) {
+            .samrat-logo {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem;
+            }
+
+            .samrat-name {
+                font-size: 2.5rem;
+            }
+
+            .samrat-tagline {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DEMO SECTION -->
+    <div class="demo-section">
+        <h1 class="demo-title">🎨 Samrat Logo Component - All Versions</h1>
+
+        <!-- Full Version -->
+        <div class="demo-box">
+            <div class="demo-label">📌 Full Version (Hero/Landing Page)</div>
+            <div class="samrat-logo-container">
+                <div class="samrat-logo">
+                    <div class="samrat-logo-icon">
+                        <div class="logo-icon-wrapper">
+                            <div class="logo-icon-inner">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="samrat-logo-text">
+                        <h1 class="samrat-name">Samrat</h1>
+                        <p class="samrat-tagline">Code • Create • Conquer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Compact Version -->
+        <div class="demo-box">
+            <div class="demo-label">📌 Compact Version (Section Headers)</div>
+            <div class="samrat-logo-container">
+                <div class="samrat-logo samrat-logo-compact">
+                    <div class="samrat-logo-icon">
+                        <div class="logo-icon-wrapper">
+                            <div class="logo-icon-inner">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="samrat-logo-text">
+                        <h1 class="samrat-name">Samrat</h1>
+                        <p class="samrat-tagline">Code • Create • Conquer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mini Version -->
+        <div class="demo-box">
+            <div class="demo-label">📌 Mini Version (Navbar/Footer)</div>
+            <div class="samrat-logo-container">
+                <div class="samrat-logo samrat-logo-mini">
+                    <div class="samrat-logo-icon">
+                        <div class="logo-icon-wrapper">
+                            <div class="logo-icon-inner">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="samrat-logo-text">
+                        <h1 class="samrat-name">Samrat</h1>
+                        <p class="samrat-tagline">Code • Create • Conquer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HTML CODE -->
+        <div class="demo-box">
+            <div class="demo-label">💻 HTML CODE (Copy & Paste)</div>
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode('html-code')">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+                <pre id="html-code"><code>&lt;!-- FULL VERSION --&gt;
+&lt;div class="samrat-logo-container"&gt;
+    &lt;div class="samrat-logo"&gt;
+        &lt;div class="samrat-logo-icon"&gt;
+            &lt;div class="logo-icon-wrapper"&gt;
+                &lt;div class="logo-icon-inner"&gt;
+                    &lt;i class="fas fa-crown"&gt;&lt;/i&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="samrat-logo-text"&gt;
+            &lt;h1 class="samrat-name"&gt;Samrat&lt;/h1&gt;
+            &lt;p class="samrat-tagline"&gt;Code • Create • Conquer&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- COMPACT VERSION --&gt;
+&lt;div class="samrat-logo samrat-logo-compact"&gt;
+    &lt;!-- Same structure as above --&gt;
+&lt;/div&gt;
+
+&lt;!-- MINI VERSION (Navbar) --&gt;
+&lt;div class="samrat-logo samrat-logo-mini"&gt;
+    &lt;!-- Same structure as above --&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+        </div>
+
+        <!-- CSS CODE -->
+        <div class="demo-box">
+            <div class="demo-label">🎨 CSS CODE (Copy & Paste - Lines 14-234)</div>
+            <div class="code-box">
+                <button class="copy-btn" onclick="copyCode('css-code')">
+                    <i class="fas fa-copy"></i> Copy
+                </button>
+                <pre id="css-code"><code>/* Copy the entire CSS section from line 14 to 234 */
+/* Or download the component file */
+
+.samrat-logo-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+.samrat-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 3rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
+    border: 2px solid rgba(139, 92, 246, 0.3);
+    box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+}
+
+/* ... (copy all logo styles) ... */</code></pre>
+            </div>
+        </div>
+
+        <!-- Alternative Icons -->
+        <div class="demo-box">
+            <div class="demo-label">🎭 Alternative Icon Options (Change the icon)</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; color: white;">
+                <div style="text-align: center; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: 0.5rem;">
+                    <i class="fas fa-crown" style="font-size: 2rem; color: #c084fc;"></i>
+                    <p>&lt;i class="fas fa-crown"&gt;&lt;/i&gt;</p>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: 0.5rem;">
+                    <i class="fas fa-code" style="font-size: 2rem; color: #c084fc;"></i>
+                    <p>&lt;i class="fas fa-code"&gt;&lt;/i&gt;</p>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: 0.5rem;">
+                    <i class="fas fa-rocket" style="font-size: 2rem; color: #c084fc;"></i>
+                    <p>&lt;i class="fas fa-rocket"&gt;&lt;/i&gt;</p>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: 0.5rem;">
+                    <i class="fas fa-fire" style="font-size: 2rem; color: #c084fc;"></i>
+                    <p>&lt;i class="fas fa-fire"&gt;&lt;/i&gt;</p>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: 0.5rem;">
+                    <i class="fas fa-bolt" style="font-size: 2rem; color: #c084fc;"></i>
+                    <p>&lt;i class="fas fa-bolt"&gt;&lt;/i&gt;</p>
+                </div>
+                <div style="text-align: center; padding: 1rem; background: rgba(59, 130, 246, 0.1); border-radius: 0.5rem;">
+                    <i class="fas fa-star" style="font-size: 2rem; color: #c084fc;"></i>
+                    <p>&lt;i class="fas fa-star"&gt;&lt;/i&gt;</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Instructions -->
+        <div class="demo-box">
+            <div class="demo-label">📖 How to Use</div>
+            <div style="color: white; line-height: 1.8;">
+                <ol style="padding-left: 2rem;">
+                    <li><strong>Copy the CSS:</strong> Copy lines 14-234 from this file to your stylesheet</li>
+                    <li><strong>Copy the HTML:</strong> Choose your preferred version (Full/Compact/Mini)</li>
+                    <li><strong>Add Font Awesome:</strong> Include Font Awesome CDN in your HTML head:
+                        <div class="code-box" style="margin-top: 0.5rem;">
+                            <code>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;</code>
+                        </div>
+                    </li>
+                    <li><strong>Customize:</strong> Change icon, colors, or tagline as needed</li>
+                    <li><strong>Use anywhere:</strong> Hero sections, navbars, footers, or loading screens</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            const code = codeElement.textContent;
+            
+            navigator.clipboard.writeText(code).then(function() {
+                const button = event.target.closest('.copy-btn');
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.style.background = '#10b981';
+                
+                setTimeout(function() {
+                    button.innerHTML = originalHTML;
+                    button.style.background = '#3b82f6';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

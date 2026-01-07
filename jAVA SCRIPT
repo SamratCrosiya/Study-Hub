@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete JavaScript Tutorial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .hero-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .section-header {
+            padding: 25px;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .section-header h3 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .section-body {
+            padding: 25px;
+            display: none;
+        }
+        
+        .section-body.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .topic-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .topic-card:hover {
+            border-color: #667eea;
+        }
+        
+        .topic-title {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .code-container {
+            position: relative;
+            margin-top: 15px;
+        }
+        
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 0;
+            max-height: 400px;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+        
+        .copy-btn.copied {
+            background: #28a745;
+        }
+        
+        .api-demo {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .api-result {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            min-height: 100px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .weather-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .weather-card h4 {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+        
+        .weather-icon {
+            font-size: 4rem;
+            margin: 20px 0;
+        }
+        
+        .btn-gradient {
+            background: var(--primary-gradient);
+            border: none;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-gradient:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+        
+        .backend-section {
+            background: #2d3748;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .backend-section h3 {
+            color: #48bb78;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1><i class="fas fa-code"></i> Complete JavaScript Tutorial</h1>
+            <p class="lead">Master JavaScript from basics to advanced concepts with interactive examples</p>
+            <div class="mt-4">
+                <span class="badge bg-primary me-2"><i class="fas fa-check"></i> ES6+ Features</span>
+                <span class="badge bg-success me-2"><i class="fas fa-check"></i> Async/Await</span>
+                <span class="badge bg-info me-2"><i class="fas fa-check"></i> API Integration</span>
+                <span class="badge bg-warning"><i class="fas fa-check"></i> DOM Manipulation</span>
+            </div>
+        </div>
+
+        <!-- Section 1: JavaScript Basics -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(1)">
+                <h3><i class="fas fa-code"></i> JavaScript Basics</h3>
+                <i class="fas fa-chevron-down" id="icon-1"></i>
+            </div>
+            <div class="section-body" id="section-1">
+                <!-- Variables & Data Types -->
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-database"></i> Variables & Data Types</div>
+                    <p>Learn about let, const, and different data types in JavaScript</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-1')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-1">// Variables in JavaScript
+let name = "John";        // String
+let age = 25;             // Number
+let isStudent = true;     // Boolean
+let hobbies = ["coding", "gaming"];  // Array
+let person = {            // Object
+  name: "John",
+  age: 25
+};
+
+const PI = 3.14159;       // Constant (cannot be changed)
+
+// Template Literals
+let greeting = `Hello, my name is ${name} and I'm ${age} years old`;
+console.log(greeting);
+
+// Type checking
+console.log(typeof name);      // "string"
+console.log(typeof age);       // "number"
+console.log(typeof isStudent); // "boolean"</code></pre>
+                    </div>
+                </div>
+
+                <!-- Operators & Conditionals -->
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-code-branch"></i> Operators & Conditionals</div>
+                    <p>Working with operators and if-else statements</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-2')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-2">// Arithmetic Operators
+let x = 10, y = 3;
+console.log(x + y);  // 13 (Addition)
+console.log(x - y);  // 7  (Subtraction)
+console.log(x * y);  // 30 (Multiplication)
+console.log(x / y);  // 3.33 (Division)
+console.log(x % y);  // 1  (Modulus)
+
+// Comparison Operators
+console.log(5 == "5");   // true (loose equality)
+console.log(5 === "5");  // false (strict equality)
+
+// Conditionals
+if (age >= 18) {
+  console.log("You are an adult");
+} else {
+  console.log("You are a minor");
+}
+
+// Ternary Operator
+let status = age >= 18 ? "Adult" : "Minor";</code></pre>
+                    </div>
+                </div>
+
+                <!-- Loops -->
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-sync"></i> Loops & Iterations</div>
+                    <p>Different ways to loop through data</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-3')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-3">// For Loop
+for (let i = 0; i < 5; i++) {
+  console.log(`Count: ${i}`);
+}
+
+// While Loop
+let count = 0;
+while (count < 5) {
+  console.log(`Count: ${count}`);
+  count++;
+}
+
+// For...of Loop (arrays)
+let fruits = ["apple", "banana", "orange"];
+for (let fruit of fruits) {
+  console.log(fruit);
+}
+
+// For...in Loop (objects)
+let person = { name: "John", age: 25 };
+for (let key in person) {
+  console.log(`${key}: ${person[key]}`);
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Functions & Scope -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(2)">
+                <h3><i class="fas fa-bolt"></i> Functions & Scope</h3>
+                <i class="fas fa-chevron-down" id="icon-2"></i>
+            </div>
+            <div class="section-body" id="section-2">
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-function"></i> Function Declarations & Arrow Functions</div>
+                    <p>Different ways to create functions in JavaScript</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-4')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-4">// Function Declaration
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+// Function Expression
+const add = function(a, b) {
+  return a + b;
+};
+
+// Arrow Functions (ES6+)
+const multiply = (a, b) => a * b;
+const square = x => x * x;
+
+// Default Parameters
+function greetUser(name = "Guest") {
+  return `Welcome, ${name}!`;
+}
+
+// Rest Parameters
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sum(1, 2, 3, 4, 5));  // 15</code></pre>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-layer-group"></i> Scope & Closures</div>
+                    <p>Understanding variable scope and closures</p>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-5')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-5">// Closure Example
+function counter() {
+  let count = 0;  // Private variable
+  
+  return {
+    increment: function() {
+      count++;
+      return count;
+    },
+    decrement: function() {
+      count--;
+      return count;
+    },
+    getCount: function() {
+      return count;
+    }
+  };
+}
+
+const myCounter = counter();
+console.log(myCounter.increment());  // 1
+console.log(myCounter.increment());  // 2
+console.log(myCounter.getCount());   // 2</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Arrays & Methods -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(3)">
+                <h3><i class="fas fa-list"></i> Arrays & Array Methods</h3>
+                <i class="fas fa-chevron-down" id="icon-3"></i>
+            </div>
+            <div class="section-body" id="section-3">
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-table"></i> Array Basics & Methods</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-6')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-6">// Creating Arrays
+let fruits = ["apple", "banana", "orange"];
+
+// Array Methods
+fruits.push("grape");           // Add to end
+fruits.unshift("mango");        // Add to start
+let lastFruit = fruits.pop();   // Remove from end
+let firstFruit = fruits.shift();// Remove from start
+
+// Finding Elements
+let index = fruits.indexOf("banana");
+let exists = fruits.includes("apple");
+
+// Slicing and Splicing
+let sliced = fruits.slice(1, 3);
+fruits.splice(1, 2, "kiwi");
+
+// Copying Arrays
+let fruitsCopy = [...fruits];  // Spread operator</code></pre>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-filter"></i> Modern Array Methods</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-7')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-7">let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// MAP - Transform each element
+let doubled = numbers.map(num => num * 2);
+
+// FILTER - Keep elements that pass condition
+let evens = numbers.filter(num => num % 2 === 0);
+
+// REDUCE - Reduce to single value
+let sum = numbers.reduce((total, num) => total + num, 0);
+
+// FIND - Get first element that matches
+let firstEven = numbers.find(num => num % 2 === 0);
+
+// SOME & EVERY
+let hasEven = numbers.some(num => num % 2 === 0);
+let allPositive = numbers.every(num => num > 0);
+
+// CHAINING
+let result = numbers
+  .filter(num => num % 2 === 0)
+  .map(num => num * 2)
+  .reduce((sum, num) => sum + num, 0);</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Objects & Destructuring -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(4)">
+                <h3><i class="fas fa-cube"></i> Objects & Destructuring</h3>
+                <i class="fas fa-chevron-down" id="icon-4"></i>
+            </div>
+            <div class="section-body" id="section-4">
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-cubes"></i> Objects & Methods</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-8')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-8">// Object Literals
+let person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 30,
+  
+  // Method
+  fullName: function() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+  
+  // ES6 Method Shorthand
+  greet() {
+    return `Hello, I'm ${this.fullName()}`;
+  }
+};
+
+// Adding/Modifying Properties
+person.phone = "123-456-7890";
+person.age = 31;
+
+// Object Methods
+let keys = Object.keys(person);
+let values = Object.values(person);
+let entries = Object.entries(person);
+
+// Copying Objects
+let personCopy = { ...person };  // Shallow copy</code></pre>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-expand-arrows-alt"></i> Destructuring & Spread</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-9')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-9">// Object Destructuring
+let person = {
+  name: "Alice",
+  age: 28,
+  city: "NYC"
+};
+
+let { name, age } = person;
+
+// Array Destructuring
+let colors = ["red", "green", "blue"];
+let [first, second, third] = colors;
+
+// Rest operator
+let [head, ...tail] = colors;
+
+// Spread Operator
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let combined = [...arr1, ...arr2];
+
+// Swapping variables
+let a = 1, b = 2;
+[a, b] = [b, a];</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Async JavaScript -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(5)">
+                <h3><i class="fas fa-cloud"></i> Async JavaScript</h3>
+                <i class="fas fa-chevron-down" id="icon-5"></i>
+            </div>
+            <div class="section-body" id="section-5">
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-hourglass-half"></i> Promises</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-10')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-10">// Creating a Promise
+let myPromise = new Promise((resolve, reject) => {
+  let success = true;
+  
+  setTimeout(() => {
+    if (success) {
+      resolve("Operation successful!");
+    } else {
+      reject("Operation failed!");
+    }
+  }, 2000);
+});
+
+// Using Promises
+myPromise
+  .then(result => {
+    console.log(result);
+    return "Next step";
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error(error);
+  })
+  .finally(() => {
+    console.log("Cleanup code");
+  });
+
+// Promise.all - Wait for multiple promises
+Promise.all([promise1, promise2])
+  .then(results => {
+    console.log("All results:", results);
+  });</code></pre>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-stopwatch"></i> Async/Await</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-11')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-11">// Async function
+async function fetchData() {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Parallel vs Sequential
+
+// SEQUENTIAL (Slow)
+async function sequential() {
+  const user1 = await fetchUser(1);
+  const user2 = await fetchUser(2);
+  return [user1, user2];
+}
+
+// PARALLEL (Fast)
+async function parallel() {
+  const [user1, user2] = await Promise.all([
+    fetchUser(1),
+    fetchUser(2)
+  ]);
+  return [user1, user2];
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 6: DOM Manipulation -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(6)">
+                <h3><i class="fas fa-file-code"></i> DOM Manipulation</h3>
+                <i class="fas fa-chevron-down" id="icon-6"></i>
+            </div>
+            <div class="section-body" id="section-6">
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-mouse-pointer"></i> Selecting & Modifying Elements</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-12')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-12">// Selecting Elements
+let element = document.getElementById("myId");
+let elements = document.getElementsByClassName("myClass");
+
+// Modern Selectors (Recommended)
+let single = document.querySelector(".myClass");
+let multiple = document.querySelectorAll(".myClass");
+
+// Modifying Content
+element.textContent = "New text";
+element.innerHTML = "&lt;strong&gt;Bold text&lt;/strong&gt;";
+
+// Modifying Styles
+element.style.color = "red";
+element.style.backgroundColor = "blue";
+
+// Working with Classes
+element.classList.add("active");
+element.classList.remove("inactive");
+element.classList.toggle("highlight");
+
+// Creating Elements
+let newDiv = document.createElement("div");
+newDiv.textContent = "I'm new!";
+document.body.appendChild(newDiv);</code></pre>
+                    </div>
+                </div>
+
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-hand-pointer"></i> Event Handling</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-13')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-13">// Event Listener
+let button = document.querySelector("#myButton");
+
+button.addEventListener("click", (event) => {
+  console.log("Button clicked!");
+  console.log(event.target);
+});
+
+// Common Events
+element.addEventListener("click", handler);
+element.addEventListener("mouseenter", handler);
+input.addEventListener("input", handler);
+input.addEventListener("change", handler);
+form.addEventListener("submit", handler);
+
+// Event Delegation
+document.querySelector("#list").addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete-btn")) {
+    e.target.parentElement.remove();
+  }
+});
+
+// Prevent Default
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  console.log("Form submitted!");
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7: API Integration -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(7)">
+                <h3><i class="fas fa-server"></i> API Integration (Frontend)</h3>
+                <i class="fas fa-chevron-down" id="icon-7"></i>
+            </div>
+            <div class="section-body" id="section-7">
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-exchange-alt"></i> Fetch API Basics</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-14')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-14">// GET Request
+async function getUsers() {
+  try {
+    const response = await fetch("https://api.example.com/users");
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log("Users:", data);
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// POST Request
+async function createUser(userData) {
+  try {
+    const response = await fetch("https://api.example.com/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData)
+    });
+    
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+// PUT Request (Update)
+async function updateUser(userId, updates) {
+  const response = await fetch(`https://api.example.com/users/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updates)
+  });
+  return await response.json();
+}
+
+// DELETE Request
+async function deleteUser(userId) {
+  await fetch(`https://api.example.com/users/${userId}`, {
+    method: "DELETE"
+  });
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Live Weather API Demo -->
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-cloud-sun"></i> Live API Demo - Weather App</div>
+                    <p>Try fetching real weather data from OpenWeatherMap API</p>
+                    
+                    <div class="api-demo">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Enter City Name:</strong></label>
+                            <input type="text" class="form-control" id="cityInput" placeholder="e.g., London, New York, Tokyo">
+                        </div>
+                        <button class="btn btn-gradient" onclick="getWeather()">
+                            <i class="fas fa-search"></i> Get Weather
+                        </button>
+                        
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <p class="mt-2">Fetching weather data...</p>
+                        </div>
+                        
+                        <div class="api-result" id="weatherResult"></div>
+                    </div>
+
+                    <div class="code-container mt-3">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-15')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-15">// Weather API Function
+async function getWeather() {
+  const city = document.querySelector("#cityInput").value;
+  const apiKey = "YOUR_API_KEY"; // Get from OpenWeatherMap
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  
+  try {
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error("City not found");
+    }
+    
+    const data = await response.json();
+    
+    // Display weather data
+    displayWeather({
+      city: data.name,
+      temperature: Math.round(data.main.temp),
+      description: data.weather[0].description,
+      humidity: data.main.humidity,
+      windSpeed: data.wind.speed,
+      icon: data.weather[0].icon
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    alert("City not found or API error!");
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- GitHub API Demo -->
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fab fa-github"></i> GitHub User API Demo</div>
+                    <p>Fetch GitHub user information</p>
+                    
+                    <div class="api-demo">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Enter GitHub Username:</strong></label>
+                            <input type="text" class="form-control" id="githubInput" placeholder="e.g., torvalds, gaearon">
+                        </div>
+                        <button class="btn btn-gradient" onclick="getGitHubUser()">
+                            <i class="fab fa-github"></i> Get User Info
+                        </button>
+                        
+                        <div class="loading" id="githubLoading">
+                            <div class="spinner"></div>
+                            <p class="mt-2">Fetching GitHub data...</p>
+                        </div>
+                        
+                        <div class="api-result" id="githubResult"></div>
+                    </div>
+
+                    <div class="code-container mt-3">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-16')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-16">// GitHub API Function
+async function getGitHubUser() {
+  const username = document.querySelector("#githubInput").value;
+  const url = `https://api.github.com/users/${username}`;
+  
+  try {
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      throw new Error("User not found");
+    }
+    
+    const data = await response.json();
+    
+    return {
+      name: data.name,
+      bio: data.bio,
+      repos: data.public_repos,
+      followers: data.followers,
+      avatar: data.avatar_url,
+      location: data.location
+    };
+  } catch (error) {
+    console.error("GitHub API error:", error);
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Backend API Server -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(8)">
+                <h3><i class="fas fa-server"></i> Backend API Server (Node.js)</h3>
+                <i class="fas fa-chevron-down" id="icon-8"></i>
+            </div>
+            <div class="section-body" id="section-8">
+                <div class="backend-section">
+                    <h3><i class="fas fa-terminal"></i> Setting Up Node.js Server</h3>
+                    <p>Create a backend server to handle API keys securely</p>
+                    
+                    <div class="topic-card bg-dark text-light">
+                        <div class="topic-title text-warning"><i class="fas fa-download"></i> Step 1: Install Node.js & Dependencies</div>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this, 'code-17')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <pre><code id="code-17"># Install Node.js from https://nodejs.org
+
+# Create project folder
+mkdir weather-api-server
+cd weather-api-server
+
+# Initialize npm project
+npm init -y
+
+# Install dependencies
+npm install express cors dotenv node-fetch</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="topic-card bg-dark text-light mt-3">
+                        <div class="topic-title text-warning"><i class="fas fa-file"></i> Step 2: Create .env File (Store API Keys)</div>
+                        <p>Never expose API keys in frontend code!</p>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this, 'code-18')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <pre><code id="code-18"># .env file
+PORT=3000
+OPENWEATHER_API_KEY=your_openweathermap_api_key_here
+GITHUB_TOKEN=your_github_token_here</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="topic-card bg-dark text-light mt-3">
+                        <div class="topic-title text-success"><i class="fas fa-code"></i> Step 3: Create Server (server.js)</div>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this, 'code-19')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <pre><code id="code-19">// server.js
+const express = require('express');
+const cors = require('cors');
+const fetch = require('node-fetch');
+require('dotenv').config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Health check endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'Weather API Server Running!' });
+});
+
+// Weather endpoint
+app.get('/api/weather/:city', async (req, res) => {
+  try {
+    const { city } = req.params;
+    const apiKey = process.env.OPENWEATHER_API_KEY;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    
+    const response = await fetch(url);
+    
+    if (!response.ok) {
+      return res.status(404).json({ error: 'City not found' });
+    }
+    
+    const data = await response.json();
+    
+    // Send cleaned data
+    res.json({
+      city: data.name,
+      temperature: Math.round(data.main.temp),
+      description: data.weather[0].description,
+      humidity: data.main.humidity,
+      windSpeed: data.wind.speed,
+      icon: data.weather[0].icon
+    });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// GitHub user endpoint
+app.get('/api/github/:username', async (req, res) => {
+  try {
+    const { username } = req.params;
+    const url = `https://api.github.com/users/${username}`;
+    
+    const response = await fetch(url, {
+      headers: {
+        'Authorization': `token ${process.env.GITHUB_TOKEN}`
+      }
+    });
+    
+    if (!response.ok) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    const data = await response.json();
+    
+    res.json({
+      name: data.name,
+      username: data.login,
+      bio: data.bio,
+      repos: data.public_repos,
+      followers: data.followers,
+      following: data.following,
+      avatar: data.avatar_url,
+      location: data.location,
+      blog: data.blog
+    });
+  } catch (error) {
+    console.error('Error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="topic-card bg-dark text-light mt-3">
+                        <div class="topic-title text-info"><i class="fas fa-play"></i> Step 4: Run the Server</div>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this, 'code-20')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <pre><code id="code-20"># Start the server
+node server.js
+
+# Server will run on http://localhost:3000
+
+# Test endpoints:
+# http://localhost:3000/api/weather/London
+# http://localhost:3000/api/github/torvalds</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="topic-card bg-dark text-light mt-3">
+                        <div class="topic-title text-primary"><i class="fas fa-globe"></i> Step 5: Frontend Code (Call Your Backend)</div>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this, 'code-21')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <pre><code id="code-21">// Frontend JavaScript - Call your backend instead of external API
+
+// Weather function using your backend
+async function getWeather(city) {
+  try {
+    const response = await fetch(`http://localhost:3000/api/weather/${city}`);
+    
+    if (!response.ok) {
+      throw new Error('City not found');
+    }
+    
+    const data = await response.json();
+    console.log('Weather:', data);
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// GitHub function using your backend
+async function getGitHubUser(username) {
+  try {
+    const response = await fetch(`http://localhost:3000/api/github/${username}`);
+    
+    if (!response.ok) {
+      throw new Error('User not found');
+    }
+    
+    const data = await response.json();
+    console.log('GitHub User:', data);
+    return data;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Usage
+getWeather('London');
+getGitHubUser('torvalds');</code></pre>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning mt-4" role="alert">
+                        <h5><i class="fas fa-exclamation-triangle"></i> Security Best Practices</h5>
+                        <ul>
+                            <li><strong>Never</strong> expose API keys in frontend code</li>
+                            <li>Always store keys in <code>.env</code> file</li>
+                            <li>Add <code>.env</code> to <code>.gitignore</code></li>
+                            <li>Use environment variables in production</li>
+                            <li>Implement rate limiting on your backend</li>
+                            <li>Use HTTPS in production</li>
+                        </ul>
+                    </div>
+
+                    <div class="topic-card bg-dark text-light mt-3">
+                        <div class="topic-title text-danger"><i class="fas fa-shield-alt"></i> Advanced: Add Rate Limiting</div>
+                        <div class="code-container">
+                            <button class="copy-btn" onclick="copyCode(this, 'code-22')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                            <pre><code id="code-22">// Install rate limiter
+npm install express-rate-limit
+
+// Add to server.js
+const rateLimit = require('express-rate-limit');
+
+// Create rate limiter
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests, please try again later.'
+});
+
+// Apply to all routes
+app.use(limiter);
+
+// Or apply to specific routes
+app.use('/api/', limiter);</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 9: Modern ES6+ Features -->
+        <div class="section-card">
+            <div class="section-header" onclick="toggleSection(9)">
+                <h3><i class="fas fa-star"></i> Modern ES6+ Features</h3>
+                <i class="fas fa-chevron-down" id="icon-9"></i>
+            </div>
+            <div class="section-body" id="section-9">
+                <div class="topic-card">
+                    <div class="topic-title"><i class="fas fa-magic"></i> Advanced Features</div>
+                    <div class="code-container">
+                        <button class="copy-btn" onclick="copyCode(this, 'code-23')">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code id="code-23">// Optional Chaining
+const user = {
+  name: "John",
+  address: {
+    city: "NYC"
+  }
+};
+console.log(user.address?.city); // "NYC"
+console.log(user.phone?.number); // undefined (no error)
+
+// Nullish Coalescing
+let value = null;
+let result = value ?? "default"; // "default"
+let result2 = 0 ?? "default";    // 0 (not default!)
+
+// Template Literals
+const name = "Alice";
+const age = 25;
+const message = `
+  Hello ${name}!
+  You are ${age} years old.
+  Next year you'll be ${age + 1}.
+`;
+
+// Array Methods - flatMap, flat
+const nested = [[1, 2], [3, 4], [5]];
+console.log(nested.flat()); // [1, 2, 3, 4, 5]
+
+const numbers = [1, 2, 3];
+const doubled = numbers.flatMap(x => [x, x * 2]);
+// [1, 2, 2, 4, 3, 6]
+
+// Object.fromEntries
+const entries = [['name', 'John'], ['age', 30]];
+const obj = Object.fromEntries(entries);
+// { name: 'John', age: 30 }
+
+// Dynamic Import
+async function loadModule() {
+  const module = await import('./myModule.js');
+  module.doSomething();
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="hero-section mt-4">
+            <h4><i class="fas fa-graduation-cap"></i> Congratulations!</h4>
+            <p>You've completed the JavaScript tutorial. Keep practicing and building projects!</p>
+            <div class="mt-3">
+                <a href="#" class="btn btn-gradient me-2"><i class="fas fa-book"></i> Documentation</a>
+                <a href="#" class="btn btn-outline-primary"><i class="fas fa-code"></i> Practice Projects</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle section visibility
+        function toggleSection(sectionId) {
+            const section = document.getElementById(`section-${sectionId}`);
+            const icon = document.getElementById(`icon-${sectionId}`);
+            
+            section.classList.toggle('active');
+            
+            if (section.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Copy code to clipboard
+        function copyCode(button, codeId) {
+            const code = document.getElementById(codeId).textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                    button.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // Weather API Function (Demo)
+        async function getWeather() {
+            const city = document.getElementById('cityInput').value.trim();
+            const loading = document.getElementById('loading');
+            const resultDiv = document.getElementById('weatherResult');
+            
+            if (!city) {
+                alert('Please enter a city name');
+                return;
+            }
+            
+            loading.style.display = 'block';
+            resultDiv.innerHTML = '';
+            
+            try {
+                // Using OpenWeatherMap API (you need to get a free API key)
+                const apiKey = 'demo'; // Replace with your actual API key
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+                
+                // For demo purposes, we'll simulate a response
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                    resultDiv.innerHTML = `
+                        <div class="weather-card">
+                            <h4><i class="fas fa-map-marker-alt"></i> ${city}</h4>
+                            <div class="weather-icon">
+                                <i class="fas fa-cloud-sun"></i>
+                            </div>
+                            <h2>22°C</h2>
+                            <p style="font-size: 1.2rem; text-transform: capitalize;">Partly Cloudy</p>
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <i class="fas fa-tint"></i> Humidity: 65%
+                                </div>
+                                <div class="col-6">
+                                    <i class="fas fa-wind"></i> Wind: 5.2 m/s
+                                </div>
+                            </div>
+                            <div class="alert alert-info mt-3">
+                                <small><i class="fas fa-info-circle"></i> To use real data, get a free API key from <a href="https://openweathermap.org/api" target="_blank" class="text-white"><u>OpenWeatherMap</u></a> and set up the backend server as shown above.</small>
+                            </div>
+                        </div>
+                    `;
+                }, 1000);
+                
+            } catch (error) {
+                loading.style.display = 'none';
+                resultDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle"></i> Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // GitHub API Function (Demo)
+        async function getGitHubUser() {
+            const username = document.getElementById('githubInput').value.trim();
+            const loading = document.getElementById('githubLoading');
+            const resultDiv = document.getElementById('githubResult');
+            
+            if (!username) {
+                alert('Please enter a GitHub username');
+                return;
+            }
+            
+            loading.style.display = 'block';
+            resultDiv.innerHTML = '';
+            
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}`);
+                
+                if (!response.ok) {
+                    throw new Error('User not found');
+                }
+                
+                const data = await response.json();
+                
+                loading.style.display = 'none';
+                resultDiv.innerHTML = `
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-3 text-center">
+                                    <img src="${data.avatar_url}" class="rounded-circle img-fluid" style="max-width: 150px;">
+                                </div>
+                                <div class="col-md-9">
+                                    <h4 class="mb-1">${data.name || data.login}</h4>
+                                    <p class="text-muted mb-2">@${data.login}</p>
+                                    <p class="mb-3">${data.bio || 'No bio available'}</p>
+                                    <div class="row text-center">
+                                        <div class="col-4">
+                                            <strong>${data.public_repos}</strong><br>
+                                            <small class="text-muted">Repos</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong>${data.followers}</strong><br>
+                                            <small class="text-muted">Followers</small>
+                                        </div>
+                                        <div class="col-4">
+                                            <strong>${data.following}</strong><br>
+                                            <small class="text-muted">Following</small>
+                                        </div>
+                                    </div>
+                                    ${data.location ? `<p class="mt-3 mb-0"><i class="fas fa-map-marker-alt"></i> ${data.location}</p>` : ''}
+                                    <a href="${data.html_url}" target="_blank" class="btn btn-dark btn-sm mt-3">
+                                        <i class="fab fa-github"></i> View Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+            } catch (error) {
+                loading.style.display = 'none';
+                resultDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle"></i> Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Allow Enter key to trigger searches
+        document.getElementById('cityInput')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') getWeather();
+        });
+
+        document.getElementById('githubInput')?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') getGitHubUser();
+        });
+
+        // Smooth scroll to top button
+        window.addEventListener('scroll', () => {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (scrollBtn) {
+                if (window.pageYOffset > 300) {
+                    scrollBtn.style.display = 'block';
+                } else {
+                    scrollBtn.style.display = 'none';
+                }
+            }
+        });
+
+        // Log welcome message
+        console.log('%c🚀 Welcome to JavaScript Tutorial!', 'color: #667eea; font-size: 20px; font-weight: bold;');
+        console.log('%cOpen the console to test code snippets!', 'color: #764ba2; font-size: 14px;');
+    </script>
+</body>
+</html>

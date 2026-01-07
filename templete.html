@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Mastery Tutorial</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Paste the EXACT SAME CSS from your index.html here to keep the design consistent */
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f172a 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .back-btn {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button links back to index.html -->
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Hub
+        </a>
+
+        <div class="content-container">
+            <h1 class="mb-4">🎨 CSS Mastery Course</h1>
+            
+            <div class="alert alert-info">
+                <strong>Welcome!</strong> This is the external page for CSS tutorials.
+            </div>
+
+            <h3>Lesson 1: Introduction</h3>
+            <p>CSS (Cascading Style Sheets) is used to style and layout web pages...</p>
+            
+            <!-- Add your tutorial content here -->
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/1Rs2ND1ryYc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 10px; margin-top: 20px;"></iframe>
+        </div>
+    </div>
+
+</body>
+</html>

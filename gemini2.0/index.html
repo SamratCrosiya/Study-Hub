@@ -1,0 +1,548 @@
+Samrat study hub
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samrat's Web Dev Hub - Complete Learning Platform</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1a1a2e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #0f172a 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Logo Styles */
+        .samrat-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 2rem 3rem;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .samrat-logo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 80px rgba(139, 92, 246, 0.5);
+        }
+
+        .logo-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .logo-icon-inner {
+            width: 70px;
+            height: 70px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon-inner i {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .samrat-name {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #60a5fa, #c084fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .samrat-tagline {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin: 0.5rem 0 0 0;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        /* Mini Logo for Navbar */
+        .samrat-logo-mini {
+            gap: 0.75rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .samrat-logo-mini .logo-icon-wrapper { width: 40px; height: 40px; }
+        .samrat-logo-mini .logo-icon-inner { width: 34px; height: 34px; }
+        .samrat-logo-mini .logo-icon-inner i { font-size: 1.2rem; }
+        .samrat-logo-mini .samrat-name { font-size: 1.8rem; }
+        .samrat-logo-mini .samrat-tagline { display: none; }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        /* Page Management */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            border-radius: 20px;
+            margin: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        /* Category Cards */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .category-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .badge-custom {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 5px 5px 0 0;
+        }
+
+        .badge-beginner { background: var(--success); color: white; }
+        .badge-intermediate { background: var(--primary); color: white; }
+        .badge-advanced { background: var(--danger); color: white; }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .course-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px;
+        }
+
+        .lesson-box {
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .lesson-box h3 {
+            color: #60a5fa;
+            margin-bottom: 15px;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary-custom:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .samrat-logo {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+            .samrat-name { font-size: 2.5rem; }
+            .category-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container-fluid px-4">
+            <a class="samrat-logo samrat-logo-mini" href="#" onclick="showPage('home')">
+                <div class="logo-icon-wrapper">
+                    <div class="logo-icon-inner">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                </div>
+                <h1 class="samrat-name">Samrat</h1>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showPage('home')"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="homePage" class="page active">
+        <div class="container-fluid">
+            <div class="hero">
+                <div class="d-flex justify-content-center mb-4">
+                    <div class="samrat-logo">
+                        <div class="logo-icon-wrapper">
+                            <div class="logo-icon-inner">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 class="samrat-name">Samrat</h1>
+                            <p class="samrat-tagline">Code • Create • Conquer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>Web Development Mastery Hub</h1>
+                <p>Your complete guide from beginner to professional web developer</p>
+            </div>
+
+            <!-- Category Grid -->
+            <h2 class="text-center my-5">📚 Choose Your Learning Path</h2>
+            <div class="category-grid">
+                <a href="#" class="category-card" onclick="showPage('roadmap'); return false;">
+                    <div class="category-icon">🗺️</div>
+                    <h3>Learning Roadmap</h3>
+                    <p>10-step journey from HTML basics to advanced development</p>
+                    <span class="badge-custom badge-beginner">Beginner</span>
+                </a>
+
+                <a href="#" class="category-card" onclick="showPage('tutorials'); return false;">
+                    <div class="category-icon">💻</div>
+                    <h3>Interactive Tutorials</h3>
+                    <p>Hands-on coding with live examples</p>
+                    <span class="badge-custom badge-intermediate">Intermediate</span>
+                </a>
+
+                <a href="#" class="category-card" onclick="showPage('css'); return false;">
+                    <div class="category-icon">🎨</div>
+                    <h3>CSS Mastery</h3>
+                    <p>Variables, animations, and modern styling</p>
+                    <span class="badge-custom badge-beginner">Beginner</span>
+                </a>
+
+                <a href="#" class="category-card" onclick="showPage('javascript'); return false;">
+                    <div class="category-icon">⚡</div>
+                    <h3>JavaScript Complete</h3>
+                    <p>From basics to advanced: async, APIs, ES6+</p>
+                    <span class="badge-custom badge-intermediate">Intermediate</span>
+                </a>
+
+                <a href="#" class="category-card" onclick="showPage('design'); return false;">
+                    <div class="category-icon">✨</div>
+                    <h3>Modern Design</h3>
+                    <p>Latest trends and best practices</p>
+                    <span class="badge-custom badge-intermediate">Intermediate</span>
+                </a>
+
+                <a href="#" class="category-card" onclick="showPage('projects'); return false;">
+                    <div class="category-icon">🚀</div>
+                    <h3>Practice Projects</h3>
+                    <p>Build real applications</p>
+                    <span class="badge-custom badge-advanced">Advanced</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ROADMAP PAGE -->
+    <div id="roadmapPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🗺️ Learning Roadmap</h1>
+            <p>Your structured path to web development mastery</p>
+        </div>
+        <div class="course-content">
+            <div class="lesson-box">
+                <h3>📌 HTML & CSS Fundamentals</h3>
+                <p>Master the building blocks of web development</p>
+                <a href="#" class="btn-primary-custom">Start Learning</a>
+            </div>
+            <div class="lesson-box">
+                <h3>📌 JavaScript Essentials</h3>
+                <p>Learn programming fundamentals and DOM manipulation</p>
+                <a href="#" class="btn-primary-custom">Start Learning</a>
+            </div>
+            <div class="lesson-box">
+                <h3>📌 Advanced Topics</h3>
+                <p>APIs, frameworks, and modern development</p>
+                <a href="#" class="btn-primary-custom">Start Learning</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- TUTORIALS PAGE -->
+    <div id="tutorialsPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>💻 Interactive Tutorials</h1>
+            <p>Learn by doing with hands-on examples</p>
+        </div>
+        <div class="course-content">
+            <div class="lesson-box">
+                <h3>🎓 Beginner Tutorials</h3>
+                <p>Start your coding journey here</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CSS PAGE -->
+    <div id="cssPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🎨 CSS Mastery</h1>
+            <p>Master modern CSS techniques</p>
+        </div>
+        <div class="course-content">
+            <div class="lesson-box">
+                <h3>📌 CSS Variables & Colors</h3>
+                <p>Create maintainable stylesheets</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT PAGE -->
+    <div id="javascriptPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>⚡ JavaScript Complete</h1>
+            <p>From basics to advanced concepts</p>
+        </div>
+        <div class="course-content">
+            <div class="lesson-box">
+                <h3>📌 JavaScript Fundamentals</h3>
+                <p>Variables, functions, and control flow</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DESIGN PAGE -->
+    <div id="designPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>✨ Modern Design</h1>
+            <p>Create beautiful, modern interfaces</p>
+        </div>
+        <div class="course-content">
+            <div class="lesson-box">
+                <h3>📌 Design Principles</h3>
+                <p>Learn the fundamentals of good design</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS PAGE -->
+    <div id="projectsPage" class="page">
+        <a href="#" class="back-btn" onclick="showPage('home'); return false;">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+        <div class="course-header">
+            <h1>🚀 Practice Projects</h1>
+            <p>Build real-world applications</p>
+        </div>
+        <div class="course-content">
+            <div class="lesson-box">
+                <h3>📌 Todo List App</h3>
+                <p>Learn state management and localStorage</p>
+            </div>
+            <div class="lesson-box">
+                <h3>📌 Weather Dashboard</h3>
+                <p>Practice API integration</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Samrat's Web Development Hub</p>
+        <p style="color: #9ca3af;">Code • Create • Conquer</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function showPage(pageName) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            const selectedPage = document.getElementById(pageName + 'Page');
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            const navbarCollapse = document.getElementById('navbarNav');
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                bsCollapse.hide();
+            }
+        }
+    </script>
+</body>
+</html>

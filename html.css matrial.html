@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Examples - Properly Formatted</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .lesson {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .lesson h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .lesson h3 {
+            color: #8b5cf6;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .explanation {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre;
+        }
+
+        .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .keyword {
+            color: #569cd6;
+            font-weight: bold;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .function {
+            color: #dcdcaa;
+        }
+
+        .number {
+            color: #b5cea8;
+        }
+
+        .line-number {
+            color: #858585;
+            margin-right: 15px;
+            user-select: none;
+        }
+
+        .tip {
+            background: #fff9e6;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .tip strong {
+            color: #f59e0b;
+        }
+
+        .output-box {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+
+        .output-label {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .step-by-step {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+        }
+
+        .step {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .step::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .code-block {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Well-Formatted Code Examples</h1>
+
+        <!-- EXAMPLE 1: CSS Variables -->
+        <div class="lesson">
+            <h2>1️⃣ CSS Variables - Easy to Read</h2>
+            
+            <div class="explanation">
+                <strong>What are CSS Variables?</strong><br>
+                CSS Variables let you store values (like colors) and reuse them everywhere. This makes your code cleaner and easier to update.
+            </div>
+
+            <h3>📝 Properly Formatted Code:</h3>
+            <div class="code-block">
+<pre><span class="comment">/* Define your color palette */</span>
+<span class="keyword">:root</span> {
+    <span class="comment">/* Primary Colors */</span>
+    <span class="keyword">--primary:</span> <span class="string">#2563eb</span>;
+    <span class="keyword">--primary-light:</span> <span class="string">#3b82f6</span>;
+    <span class="keyword">--secondary:</span> <span class="string">#8b5cf6</span>;
+    <span class="keyword">--accent:</span> <span class="string">#f59e0b</span>;
+    
+    <span class="comment">/* Text Colors */</span>
+    <span class="keyword">--text-white:</span> <span class="string">#ffffff</span>;
+    <span class="keyword">--text-gray:</span> <span class="string">#94a3b8</span>;
+}
+
+<span class="comment">/* Using the variables */</span>
+<span class="keyword">.button</span> {
+    <span class="keyword">background:</span> <span class="function">var</span>(<span class="keyword">--primary</span>);
+    <span class="keyword">color:</span> <span class="function">var</span>(<span class="keyword">--text-white</span>);
+    <span class="keyword">padding:</span> <span class="number">15px</span> <span class="number">30px</span>;
+    <span class="keyword">border-radius:</span> <span class="number">50px</span>;
+}
+
+<span class="keyword">.button:hover</span> {
+    <span class="keyword">background:</span> <span class="function">var</span>(<span class="keyword">--primary-light</span>);
+}</pre>
+            </div>
+
+            <div class="step-by-step">
+                <h3>🔍 Line-by-Line Explanation:</h3>
+                <div class="step">
+                    <strong>Line 1-2:</strong> We define our root variables inside <code>:root</code>
+                </div>
+                <div class="step">
+                    <strong>Line 4-7:</strong> Each color gets a descriptive name like <code>--primary</code>
+                </div>
+                <div class="step">
+                    <strong>Line 13:</strong> We use the variable with <code>var(--primary)</code>
+                </div>
+                <div class="step">
+                    <strong>Line 19:</strong> On hover, we change to the lighter version
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Why This is Better:</strong> Instead of typing <code>#2563eb</code> 50 times, you define it once and use <code>var(--primary)</code>. If you want to change the color later, you only update one line!
+            </div>
+        </div>
+
+        <!-- EXAMPLE 2: Gradients -->
+        <div class="lesson">
+            <h2>2️⃣ CSS Gradients - Beautiful Backgrounds</h2>
+            
+            <div class="explanation">
+                <strong>What are Gradients?</strong><br>
+                Gradients are smooth color transitions. They make your design look modern and professional.
+            </div>
+
+            <h3>📝 Linear Gradient (straight line):</h3>
+            <div class="code-block">
+<pre><span class="keyword">.my-element</span> {
+    <span class="keyword">background:</span> <span class="function">linear-gradient</span>(
+        <span class="number">135deg</span>,              <span class="comment">/* Angle (diagonal) */</span>
+        <span class="string">#667eea</span> <span class="number">0%</span>,         <span class="comment">/* Start color at 0% */</span>
+        <span class="string">#764ba2</span> <span class="number">100%</span>        <span class="comment">/* End color at 100% */</span>
+    );
+}</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">👁️ Visual Output</div>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100px; border-radius: 10px;"></div>
+            </div>
+
+            <h3>📝 Radial Gradient (circular):</h3>
+            <div class="code-block">
+<pre><span class="keyword">.glow-effect</span> {
+    <span class="keyword">background:</span> <span class="function">radial-gradient</span>(
+        <span class="keyword">circle at</span> <span class="number">50%</span> <span class="number">50%</span>,    <span class="comment">/* Center position */</span>
+        <span class="string">#667eea</span> <span class="number">0%</span>,            <span class="comment">/* Inner color */</span>
+        <span class="keyword">transparent</span> <span class="number">70%</span>       <span class="comment">/* Fades to transparent */</span>
+    );
+}</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">👁️ Visual Output</div>
+                <div style="background: radial-gradient(circle at 50% 50%, #667eea 0%, transparent 70%); height: 100px; border-radius: 10px; background-color: #1a1a2e;"></div>
+            </div>
+
+            <div class="step-by-step">
+                <h3>🎨 Understanding the Parts:</h3>
+                <div class="step">
+                    <strong>135deg:</strong> The direction of the gradient (0° = up, 90° = right, 135° = diagonal)
+                </div>
+                <div class="step">
+                    <strong>#667eea 0%:</strong> Color at the start (0% position)
+                </div>
+                <div class="step">
+                    <strong>#764ba2 100%:</strong> Color at the end (100% position)
+                </div>
+                <div class="step">
+                    <strong>circle at 50% 50%:</strong> For radial gradients, where the center is
+                </div>
+            </div>
+        </div>
+
+        <!-- EXAMPLE 3: Animations -->
+        <div class="lesson">
+            <h2>3️⃣ CSS Animations - Make Things Move!</h2>
+            
+            <div class="explanation">
+                <strong>What are Keyframe Animations?</strong><br>
+                Animations let you move, rotate, scale, or change elements over time. They make your website feel alive!
+            </div>
+
+            <h3>📝 Step 1: Define the Animation:</h3>
+            <div class="code-block">
+<pre><span class="comment">/* Define what the animation does */</span>
+<span class="keyword">@keyframes</span> <span class="function">fadeInUp</span> {
+    <span class="comment">/* Starting state (0% or "from") */</span>
+    <span class="keyword">from</span> {
+        <span class="keyword">opacity:</span> <span class="number">0</span>;                    <span class="comment">/* Invisible */</span>
+        <span class="keyword">transform:</span> <span class="function">translateY</span>(<span class="number">50px</span>);   <span class="comment">/* 50px below */</span>
+    }
+    
+    <span class="comment">/* Ending state (100% or "to") */</span>
+    <span class="keyword">to</span> {
+        <span class="keyword">opacity:</span> <span class="number">1</span>;                    <span class="comment">/* Fully visible */</span>
+        <span class="keyword">transform:</span> <span class="function">translateY</span>(<span class="number">0</span>);      <span class="comment">/* Original position */</span>
+    }
+}</pre>
+            </div>
+
+            <h3>📝 Step 2: Apply the Animation:</h3>
+            <div class="code-block">
+<pre><span class="keyword">.my-box</span> {
+    <span class="comment">/* Apply the animation */</span>
+    <span class="keyword">animation:</span> fadeInUp <span class="number">1s</span> ease-out;
+    
+    <span class="comment">/* Breaking down "fadeInUp 1s ease-out":
+       - fadeInUp    = name of animation
+       - 1s          = duration (1 second)
+       - ease-out    = timing (slow at end)
+    */</span>
+}</pre>
+            </div>
+
+            <div class="step-by-step">
+                <h3>⚡ How It Works:</h3>
+                <div class="step">
+                    <strong>0% (from):</strong> Element is invisible (opacity: 0) and 50px below
+                </div>
+                <div class="step">
+                    <strong>25%:</strong> Element is 25% visible, 37.5px below
+                </div>
+                <div class="step">
+                    <strong>50%:</strong> Element is 50% visible, 25px below
+                </div>
+                <div class="step">
+                    <strong>75%:</strong> Element is 75% visible, 12.5px below
+                </div>
+                <div class="step">
+                    <strong>100% (to):</strong> Element fully visible, at original position
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Common Timing Functions:</strong><br>
+                • <code>ease</code> - Slow start, fast middle, slow end<br>
+                • <code>ease-in</code> - Slow start<br>
+                • <code>ease-out</code> - Slow end<br>
+                • <code>ease-in-out</code> - Slow start and end<br>
+                • <code>linear</code> - Constant speed
+            </div>
+        </div>
+
+        <!-- EXAMPLE 4: JavaScript Functions -->
+        <div class="lesson">
+            <h2>4️⃣ JavaScript Functions - Make Things Interactive</h2>
+            
+            <div class="explanation">
+                <strong>What are Functions?</strong><br>
+                Functions are reusable blocks of code that perform specific tasks. They make your website interactive!
+            </div>
+
+            <h3>📝 Simple Function Example:</h3>
+            <div class="code-block">
+<pre><span class="comment">// Define a function</span>
+<span class="keyword">function</span> <span class="function">showMessage</span>() {
+    <span class="comment">// Get the element with id="greeting"</span>
+    <span class="keyword">const</span> element = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'greeting'</span>);
+    
+    <span class="comment">// Change the text inside it</span>
+    element.innerHTML = <span class="string">'Hello, World!'</span>;
+    
+    <span class="comment">// Change the color</span>
+    element.style.color = <span class="string">'#667eea'</span>;
+}
+
+<span class="comment">// Call (use) the function</span>
+<span class="function">showMessage</span>();</pre>
+            </div>
+
+            <h3>📝 Function with Parameters:</h3>
+            <div class="code-block">
+<pre><span class="comment">// Function that accepts input</span>
+<span class="keyword">function</span> <span class="function">greetUser</span>(name) {
+    <span class="comment">// 'name' is a parameter - we can pass any name</span>
+    <span class="keyword">const</span> message = <span class="string">'Hello, '</span> + name + <span class="string">'!'</span>;
+    
+    <span class="comment">// Show alert with personalized message</span>
+    <span class="function">alert</span>(message);
+}
+
+<span class="comment">// Call with different names</span>
+<span class="function">greetUser</span>(<span class="string">'Aagam'</span>);    <span class="comment">// Shows: "Hello, Aagam!"</span>
+<span class="function">greetUser</span>(<span class="string">'Student'</span>); <span class="comment">// Shows: "Hello, Student!"</span></pre>
+            </div>
+
+            <h3>📝 Event Listener Example:</h3>
+            <div class="code-block">
+<pre><span class="comment">// Get the button element</span>
+<span class="keyword">const</span> button = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'myButton'</span>);
+
+<span class="comment">// Add click event listener</span>
+button.<span class="function">addEventListener</span>(<span class="string">'click'</span>, <span class="keyword">function</span>() {
+    <span class="comment">// This code runs when button is clicked</span>
+    <span class="function">console.log</span>(<span class="string">'Button was clicked!'</span>);
+    
+    <span class="comment">// Change button text</span>
+    button.innerHTML = <span class="string">'Clicked! ✓'</span>;
+    
+    <span class="comment">// Change button color</span>
+    button.style.background = <span class="string">'#10b981'</span>;
+});</pre>
+            </div>
+
+            <div class="step-by-step">
+                <h3>🔍 Step-by-Step Breakdown:</h3>
+                <div class="step">
+                    <strong>Line 1-2:</strong> Find the button in your HTML using its ID
+                </div>
+                <div class="step">
+                    <strong>Line 5:</strong> "Listen" for click events on this button
+                </div>
+                <div class="step">
+                    <strong>Line 6-7:</strong> When clicked, log a message to console
+                </div>
+                <div class="step">
+                    <strong>Line 10:</strong> Change the button's text to show it was clicked
+                </div>
+                <div class="step">
+                    <strong>Line 13:</strong> Change button background color to green
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Common DOM Methods:</strong><br>
+                • <code>getElementById()</code> - Get element by ID<br>
+                • <code>querySelector()</code> - Get first matching element<br>
+                • <code>querySelectorAll()</code> - Get all matching elements<br>
+                • <code>innerHTML</code> - Change element's HTML content<br>
+                • <code>style</code> - Change CSS properties<br>
+                • <code>classList.add()</code> - Add CSS class<br>
+                • <code>addEventListener()</code> - Listen for events
+            </div>
+        </div>
+
+        <!-- EXAMPLE 5: API Call -->
+        <div class="lesson">
+            <h2>5️⃣ API Integration - Connect to External Services</h2>
+            
+            <div class="explanation">
+                <strong>What is an API?</strong><br>
+                API (Application Programming Interface) lets your website talk to other services. Like asking Google's AI to answer questions!
+            </div>
+
+            <h3>📝 Making an API Request:</h3>
+            <div class="code-block">
+<pre><span class="comment">// async means this function can "wait" for things</span>
+<span class="keyword">async function</span> <span class="function">sendMessage</span>() {
+    <span class="comment">// 1. Get user's message from input field</span>
+    <span class="keyword">const</span> message = <span class="keyword">document</span>
+        .<span class="function">getElementById</span>(<span class="string">'chatInput'</span>)
+        .value;
+    
+    <span class="comment">// 2. Get API key</span>
+    <span class="keyword">const</span> apiKey = <span class="keyword">document</span>
+        .<span class="function">getElementById</span>(<span class="string">'apiKey'</span>)
+        .value;
+    
+    <span class="comment">// 3. Prepare the data to send</span>
+    <span class="keyword">const</span> requestBody = {
+        contents: [{
+            parts: [{
+                text: message
+            }]
+        }]
+    };
+    
+    <span class="comment">// 4. Build the API URL</span>
+    <span class="keyword">const</span> apiUrl = 
+        <span class="string">'https://generativelanguage.googleapis.com/'</span> +
+        <span class="string">'v1beta/models/gemini-pro:generateContent'</span> +
+        <span class="string">'?key='</span> + apiKey;
+    
+    <span class="keyword">try</span> {
+        <span class="comment">// 5. Send request to API (wait for response)</span>
+        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(apiUrl, {
+            method: <span class="string">'POST'</span>,
+            headers: {
+                <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>
+            },
+            body: <span class="keyword">JSON</span>.<span class="function">stringify</span>(requestBody)
+        });
+        
+        <span class="comment">// 6. Convert response to JSON</span>
+        <span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+        
+        <span class="comment">// 7. Get AI's answer from response</span>
+        <span class="keyword">const</span> aiAnswer = data
+            .candidates[<span class="number">0</span>]
+            .content
+            .parts[<span class="number">0</span>]
+            .text;
+        
+        <span class="comment">// 8. Show AI's answer on screen</span>
+        <span class="function">displayMessage</span>(aiAnswer);
+        
+    } <span class="keyword">catch</span> (error) {
+        <span class="comment">// 9. If something goes wrong, show error</span>
+        <span class="function">console.error</span>(<span class="string">'Error:'</span>, error);
+        <span class="function">alert</span>(<span class="string">'Failed to connect to AI'</span>);
+    }
+}</pre>
+            </div>
+
+            <div class="step-by-step">
+                <h3>🔍 What Each Part Does:</h3>
+                <div class="step">
+                    <strong>Steps 1-2:</strong> Get the message and API key from input fields
+                </div>
+                <div class="step">
+                    <strong>Step 3:</strong> Package the message in the format the API expects
+                </div>
+                <div class="step">
+                    <strong>Step 4:</strong> Build the complete API URL with your key
+                </div>
+                <div class="step">
+                    <strong>Step 5:</strong> Send the request and wait for response
+                </div>
+                <div class="step">
+                    <strong>Step 6-7:</strong> Extract the AI's answer from the response
+                </div>
+                <div class="step">
+                    <strong>Step 8:</strong> Display the answer to the user
+                </div>
+                <div class="step">
+                    <strong>Step 9:</strong> Handle errors if something fails
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Key Concepts:</strong><br>
+                • <code>async/await</code> - Wait for operations to complete<br>
+                • <code>fetch()</code> - Send HTTP requests<br>
+                • <code>try/catch</code> - Handle errors gracefully<br>
+                • <code>JSON</code> - Data format for API communication<br>
+                • <code>POST</code> - Method for sending data<br>
+                • <code>headers</code> - Additional request information
+            </div>
+        </div>
+
+        <!-- FINAL SUMMARY -->
+        <div class="lesson" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); border-left-color: #667eea;">
+            <h2>🎓 Summary - Reading Code Like a Pro</h2>
+            
+            <div class="explanation">
+                <strong>Tips for Understanding Code:</strong>
+            </div>
+
+            <div class="step-by-step">
+                <div class="step">
+                    <strong>Read Comments First:</strong> Comments (lines starting with // or /* */) explain what the code does
+                </div>
+                <div class="step">
+                    <strong>Look for Patterns:</strong> Similar code blocks often do similar things
+                </div>
+                <div class="step">
+                    <strong>Break It Down:</strong> Understand each line before moving to the next
+                </div>
+                <div class="step">
+                    <strong>Run It:</strong> Actually running the code helps you understand it better
+                </div>
+                <div class="step">
+                    <strong>Experiment:</strong> Change values and see what happens
+                </div>
+                <div class="step">
+                    <strong>Use Console:</strong> console.log() is your best friend for debugging
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Remember:</strong> Every expert coder was once a beginner. The more code you read and write, the easier it becomes. Don't be afraid to experiment and make mistakes - that's how you learn!
+            </div>
+        </div>
+    </div>
+</body>
+</html>

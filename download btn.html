@@ -1,0 +1,40 @@
+function downloadPage() {
+    // Get entire HTML
+    const htmlContent = document.documentElement.outerHTML;
+    
+    // Create downloadable file
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    
+    // Create download link
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = 'code-tutorial.html';
+    
+    // Trigger download
+    downloadLink.click();
+}
+
+
+
+How It Works:
+
+Step 1: Gets all the HTML content from the page
+Step 2: Creates a Blob (temporary file) from the content
+Step 3: Creates a download link with the filename code-tutorial.html
+Step 4: Automatically clicks the link to start download
+Step 5: Shows confirmation message
+
+3. Button Styling:
+
+Fixed position (stays visible while scrolling)
+Green gradient background
+Hover animation (lifts up)
+Responsive (smaller on mobile)
+
+📥 How to Use:
+Click the "⬇️ Download This Page" button at top-right
+File will download as code-tutorial.html
+Open the downloaded file in any browser
+Works offline - no internet needed!
+
+The downloaded file is standalone and contains everything needed to view the tutorial! 🎉

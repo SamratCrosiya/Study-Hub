@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Examples - Properly Formatted</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        /* Download Button Styles */
+        .download-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .download-icon {
+            font-size: 1.3rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+        }
+
+        .lesson {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .lesson h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .lesson h3 {
+            color: #8b5cf6;
+            margin: 25px 0 15px 0;
+            font-size: 1.3rem;
+        }
+
+        .explanation {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre;
+        }
+
+        .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+
+        .keyword {
+            color: #569cd6;
+            font-weight: bold;
+        }
+
+        .string {
+            color: #ce9178;
+        }
+
+        .function {
+            color: #dcdcaa;
+        }
+
+        .number {
+            color: #b5cea8;
+        }
+
+        .tip {
+            background: #fff9e6;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .tip strong {
+            color: #f59e0b;
+        }
+
+        .output-box {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+
+        .output-label {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .step-by-step {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+        }
+
+        .step {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .step::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .code-block {
+                font-size: 0.85rem;
+            }
+
+            .download-container {
+                top: 10px;
+                right: 10px;
+            }
+
+            .download-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Download Button -->
+    <div class="download-container">
+        <button class="download-btn" onclick="downloadPage()">
+            <span class="download-icon">⬇️</span>
+            Download This Page
+        </button>
+    </div>
+
+    <div class="container">
+        <h1>📚 Well-Formatted Code Examples</h1>
+
+        <!-- EXAMPLE 1: CSS Variables -->
+        <div class="lesson">
+            <h2>1️⃣ CSS Variables - Easy to Read</h2>
+            
+            <div class="explanation">
+                <strong>What are CSS Variables?</strong><br>
+                CSS Variables let you store values (like colors) and reuse them everywhere. This makes your code cleaner and easier to update.
+            </div>
+
+            <h3>📝 Properly Formatted Code:</h3>
+            <div class="code-block">
+<pre><span class="comment">/* Define your color palette */</span>
+<span class="keyword">:root</span> {
+    <span class="comment">/* Primary Colors */</span>
+    <span class="keyword">--primary:</span> <span class="string">#2563eb</span>;
+    <span class="keyword">--primary-light:</span> <span class="string">#3b82f6</span>;
+    <span class="keyword">--secondary:</span> <span class="string">#8b5cf6</span>;
+    <span class="keyword">--accent:</span> <span class="string">#f59e0b</span>;
+    
+    <span class="comment">/* Text Colors */</span>
+    <span class="keyword">--text-white:</span> <span class="string">#ffffff</span>;
+    <span class="keyword">--text-gray:</span> <span class="string">#94a3b8</span>;
+}
+
+<span class="comment">/* Using the variables */</span>
+<span class="keyword">.button</span> {
+    <span class="keyword">background:</span> <span class="function">var</span>(<span class="keyword">--primary</span>);
+    <span class="keyword">color:</span> <span class="function">var</span>(<span class="keyword">--text-white</span>);
+    <span class="keyword">padding:</span> <span class="number">15px</span> <span class="number">30px</span>;
+    <span class="keyword">border-radius:</span> <span class="number">50px</span>;
+}
+
+<span class="keyword">.button:hover</span> {
+    <span class="keyword">background:</span> <span class="function">var</span>(<span class="keyword">--primary-light</span>);
+}</pre>
+            </div>
+
+            <div class="step-by-step">
+                <h3>🔍 Line-by-Line Explanation:</h3>
+                <div class="step">
+                    <strong>Line 1-2:</strong> We define our root variables inside <code>:root</code>
+                </div>
+                <div class="step">
+                    <strong>Line 4-7:</strong> Each color gets a descriptive name like <code>--primary</code>
+                </div>
+                <div class="step">
+                    <strong>Line 13:</strong> We use the variable with <code>var(--primary)</code>
+                </div>
+                <div class="step">
+                    <strong>Line 19:</strong> On hover, we change to the lighter version
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Why This is Better:</strong> Instead of typing <code>#2563eb</code> 50 times, you define it once and use <code>var(--primary)</code>. If you want to change the color later, you only update one line!
+            </div>
+        </div>
+
+        <!-- EXAMPLE 2: Gradients -->
+        <div class="lesson">
+            <h2>2️⃣ CSS Gradients - Beautiful Backgrounds</h2>
+            
+            <div class="explanation">
+                <strong>What are Gradients?</strong><br>
+                Gradients are smooth color transitions. They make your design look modern and professional.
+            </div>
+
+            <h3>📝 Linear Gradient (straight line):</h3>
+            <div class="code-block">
+<pre><span class="keyword">.my-element</span> {
+    <span class="keyword">background:</span> <span class="function">linear-gradient</span>(
+        <span class="number">135deg</span>,              <span class="comment">/* Angle (diagonal) */</span>
+        <span class="string">#667eea</span> <span class="number">0%</span>,         <span class="comment">/* Start color at 0% */</span>
+        <span class="string">#764ba2</span> <span class="number">100%</span>        <span class="comment">/* End color at 100% */</span>
+    );
+}</pre>
+            </div>
+
+            <div class="output-box">
+                <div class="output-label">👁️ Visual Output</div>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100px; border-radius: 10px;"></div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Understanding the Parts:</strong><br>
+                • <code>135deg</code> - Direction (0° = up, 90° = right, 135° = diagonal)<br>
+                • <code>#667eea 0%</code> - Start color at beginning<br>
+                • <code>#764ba2 100%</code> - End color at finish
+            </div>
+        </div>
+
+        <!-- EXAMPLE 3: Animations -->
+        <div class="lesson">
+            <h2>3️⃣ CSS Animations - Make Things Move!</h2>
+            
+            <div class="explanation">
+                <strong>What are Keyframe Animations?</strong><br>
+                Animations let you move, rotate, scale, or change elements over time. They make your website feel alive!
+            </div>
+
+            <h3>📝 Step 1: Define the Animation:</h3>
+            <div class="code-block">
+<pre><span class="comment">/* Define what the animation does */</span>
+<span class="keyword">@keyframes</span> <span class="function">fadeInUp</span> {
+    <span class="comment">/* Starting state (0% or "from") */</span>
+    <span class="keyword">from</span> {
+        <span class="keyword">opacity:</span> <span class="number">0</span>;                    <span class="comment">/* Invisible */</span>
+        <span class="keyword">transform:</span> <span class="function">translateY</span>(<span class="number">50px</span>);   <span class="comment">/* 50px below */</span>
+    }
+    
+    <span class="comment">/* Ending state (100% or "to") */</span>
+    <span class="keyword">to</span> {
+        <span class="keyword">opacity:</span> <span class="number">1</span>;                    <span class="comment">/* Fully visible */</span>
+        <span class="keyword">transform:</span> <span class="function">translateY</span>(<span class="number">0</span>);      <span class="comment">/* Original position */</span>
+    }
+}</pre>
+            </div>
+
+            <h3>📝 Step 2: Apply the Animation:</h3>
+            <div class="code-block">
+<pre><span class="keyword">.my-box</span> {
+    <span class="keyword">animation:</span> fadeInUp <span class="number">1s</span> ease-out;
+}</pre>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Common Timing Functions:</strong><br>
+                • <code>ease</code> - Slow start, fast middle, slow end<br>
+                • <code>ease-in</code> - Slow start<br>
+                • <code>ease-out</code> - Slow end<br>
+                • <code>linear</code> - Constant speed
+            </div>
+        </div>
+
+        <!-- EXAMPLE 4: JavaScript Functions -->
+        <div class="lesson">
+            <h2>4️⃣ JavaScript Functions - Make Things Interactive</h2>
+            
+            <div class="explanation">
+                <strong>What are Functions?</strong><br>
+                Functions are reusable blocks of code that perform specific tasks. They make your website interactive!
+            </div>
+
+            <h3>📝 Simple Function Example:</h3>
+            <div class="code-block">
+<pre><span class="comment">// Define a function</span>
+<span class="keyword">function</span> <span class="function">showMessage</span>() {
+    <span class="keyword">const</span> element = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'greeting'</span>);
+    element.innerHTML = <span class="string">'Hello, World!'</span>;
+    element.style.color = <span class="string">'#667eea'</span>;
+}
+
+<span class="comment">// Call the function</span>
+<span class="function">showMessage</span>();</pre>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Common DOM Methods:</strong><br>
+                • <code>getElementById()</code> - Get element by ID<br>
+                • <code>querySelector()</code> - Get first matching element<br>
+                • <code>innerHTML</code> - Change element's content<br>
+                • <code>addEventListener()</code> - Listen for events
+            </div>
+        </div>
+
+        <!-- FINAL SUMMARY -->
+        <div class="lesson" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1)); border-left-color: #667eea;">
+            <h2>🎓 Summary - Reading Code Like a Pro</h2>
+            
+            <div class="step-by-step">
+                <div class="step">
+                    <strong>Read Comments First:</strong> Comments explain what the code does
+                </div>
+                <div class="step">
+                    <strong>Break It Down:</strong> Understand each line before moving to the next
+                </div>
+                <div class="step">
+                    <strong>Run It:</strong> Actually running the code helps you understand it better
+                </div>
+                <div class="step">
+                    <strong>Experiment:</strong> Change values and see what happens
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Remember:</strong> Every expert coder was once a beginner. The more code you read and write, the easier it becomes!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadPage() {
+            // Get the entire HTML content
+            const htmlContent = document.documentElement.outerHTML;
+            
+            // Create a Blob (file) from the HTML content
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            
+            // Create a temporary download link
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'code-tutorial.html';
+            
+            // Trigger the download
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            
+            // Clean up
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(downloadLink.href);
+            
+            // Show confirmation
+            alert('✅ Tutorial downloaded successfully!\n\nYou can now open "code-tutorial.html" in any browser.');
+        }
+    </script>
+</body>
+</html>

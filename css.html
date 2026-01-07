@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra AI Platform - Expanded Learning Guide</title>
+    <style>
+        @media print {
+            .no-print { display: none; }
+            body { background: white; }
+            .container { box-shadow: none; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .download-btn {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.8rem;
+            page-break-after: avoid;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            page-break-inside: avoid;
+        }
+
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .toc ol {
+            margin-left: 25px;
+        }
+
+        .toc li {
+            padding: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        .lesson {
+            margin: 50px 0;
+            page-break-inside: avoid;
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .lesson-number {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .lesson-title {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .lesson-content {
+            padding: 20px;
+        }
+
+        .concept {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .concept h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .code-example {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 25px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .code-comment {
+            color: #6a9955;
+        }
+
+        .code-keyword {
+            color: #569cd6;
+        }
+
+        .code-string {
+            color: #ce9178;
+        }
+
+        .code-function {
+            color: #dcdcaa;
+        }
+
+        .visual-output {
+            background: #f8f9fa;
+            border: 3px solid #667eea;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+
+        .output-label {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .key-points {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #f59e0b;
+        }
+
+        .key-points h4 {
+            color: #f59e0b;
+            margin-bottom: 15px;
+        }
+
+        .key-points ul {
+            margin-left: 25px;
+        }
+
+        .key-points li {
+            margin: 10px 0;
+        }
+
+        .practice-exercise {
+            background: #e6f7ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #06b6d4;
+        }
+
+        .practice-exercise h4 {
+            color: #06b6d4;
+            margin-bottom: 15px;
+        }
+
+        .tip {
+            background: #f0fff4;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #10b981;
+        }
+
+        .tip strong {
+            color: #10b981;
+        }
+
+        .warning {
+            background: #fff5f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 5px solid #ef4444;
+        }
+
+        .warning strong {
+            color: #ef4444;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .demo-box {
+            border: 2px dashed #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .gradient-demo {
+            height: 100px;
+            border-radius: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        .new-badge {
+            background: #10b981;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .lesson-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Download Section -->
+        <div class="download-section no-print">
+            <h2 style="margin-bottom: 20px;">📥 Download This EXPANDED Guide</h2>
+            <p style="margin-bottom: 20px;">Now with 5 NEW Advanced Lessons!</p>
+            <button class="download-btn" onclick="window.print()">🖨️ Save as PDF</button>
+            <button class="download-btn" onclick="downloadHTML()">💾 Download HTML</button>
+        </div>
+
+        <!-- Title -->
+        <h1>🎓 CSS Essential <span class="new-badge">EXPANDED</span></h1>
+        <div class="subtitle">Complete Learning Guide: Beginner to Expert Level</div>
+
+        <!-- New Table of Contents -->
+        <div class="toc">
+            <h2>📚 Expanded Table of Contents</h2>
+            <p style="margin-bottom: 15px; color: #666;"><strong>Original Lessons (1-10)</strong> + <span style="color: #10b981; font-weight: bold;">5 NEW Advanced Topics</span></p>
+            <ol>
+                <li>HTML Fundamentals & Structure</li>
+                <li>CSS Variables & Color Systems</li>
+                <li>Advanced Background Animations</li>
+                <li>Navigation Bar Design</li>
+                <li>Hero Section & Typography Effects</li>
+                <li>Button Design & Micro-interactions</li>
+                <li>Card Components & Grid Layouts</li>
+                <li>Form Design & Validation</li>
+                <li>Chat Interface Design</li>
+                <li>JavaScript Fundamentals</li>
+                <li style="color: #10b981; font-weight: bold;">⭐ NEW: Advanced CSS Transforms & 3D Effects</li>
+                <li style="color: #10b981; font-weight: bold;">⭐ NEW: LocalStorage & Data Persistence</li>
+                <li style="color: #10b981; font-weight: bold;">⭐ NEW: CSS Animations & Keyframes Mastery</li>
+                <li style="color: #10b981; font-weight: bold;">⭐ NEW: JavaScript Promises & Async Programming</li>
+                <li style="color: #10b981; font-weight: bold;">⭐ NEW: Advanced DOM Manipulation & Event Delegation</li>
+            </ol>
+        </div>
+
+        <!-- NEW LESSON 11: Advanced CSS Transforms -->
+        <div class="lesson page-break">
+            <div class="lesson-header">
+                <div class="lesson-number">LESSON 11 - NEW</div>
+                <div class="lesson-title">Advanced CSS Transforms & 3D Effects</div>
+            </div>
+            
+            <div class="lesson-content">
+                <div class="concept">
+                    <h3>🎭 Understanding CSS Transforms</h3>
+                    <p><strong>Transforms</strong> allow you to move, rotate, scale, and skew elements without affecting document flow. They're hardware-accelerated, making them perfect for animations.</p>
+                    <p style="margin-top: 10px;"><strong>Why use transforms?</strong> They're 60fps smooth and don't cause reflows (page re-calculations).</p>
+                </div>
+
+                <div class="code-example">
+<span class="code-comment">/* 2D Transforms */</span>
+
+<span class="code-comment">/* Translate - Move elements */</span>
+<span class="code-keyword">.translate-example</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">translateX</span>(50px); <span class="code-comment">/* Move right 50px */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">translateY</span>(-30px); <span class="code-comment">/* Move up 30px */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">translate</span>(50px, -30px); <span class="code-comment">/* Move right 50px, up 30px */</span>
+}
+
+<span class="code-comment">/* Scale - Resize elements */</span>
+<span class="code-keyword">.scale-example</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">scale</span>(1.5); <span class="code-comment">/* 150% size */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">scale</span>(0.8); <span class="code-comment">/* 80% size */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">scaleX</span>(2); <span class="code-comment">/* Double width only */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">scale</span>(1.2, 0.8); <span class="code-comment">/* Width 120%, height 80% */</span>
+}
+
+<span class="code-comment">/* Rotate - Spin elements */</span>
+<span class="code-keyword">.rotate-example</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">rotate</span>(45deg); <span class="code-comment">/* Clockwise 45 degrees */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">rotate</span>(-90deg); <span class="code-comment">/* Counter-clockwise 90 degrees */</span>
+}
+
+<span class="code-comment">/* Skew - Slant elements */</span>
+<span class="code-keyword">.skew-example</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">skewX</span>(20deg); <span class="code-comment">/* Slant horizontally */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">skewY</span>(10deg); <span class="code-comment">/* Slant vertically */</span>
+}
+
+<span class="code-comment">/* Combining Multiple Transforms */</span>
+<span class="code-keyword">.combined</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">translate</span>(50px, 50px) <span class="code-function">rotate</span>(45deg) <span class="code-function">scale</span>(1.2);
+    <span class="code-comment">/* Order matters! Read right-to-left */</span>
+}
+
+<span class="code-comment">/* 3D Transforms */</span>
+
+<span class="code-comment">/* Enable 3D Space */</span>
+<span class="code-keyword">.container-3d</span> {
+    <span class="code-keyword">perspective:</span> 1000px; <span class="code-comment">/* Depth perception (distance from viewer) */</span>
+    <span class="code-keyword">perspective-origin:</span> center; <span class="code-comment">/* Vanishing point */</span>
+}
+
+<span class="code-comment">/* 3D Rotate */</span>
+<span class="code-keyword">.rotate-3d</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">rotateX</span>(45deg); <span class="code-comment">/* Rotate around X-axis */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">rotateY</span>(45deg); <span class="code-comment">/* Rotate around Y-axis */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">rotateZ</span>(45deg); <span class="code-comment">/* Rotate around Z-axis (same as rotate()) */</span>
+    <span class="code-keyword">transform-style:</span> preserve-3d; <span class="code-comment">/* Children maintain 3D position */</span>
+}
+
+<span class="code-comment">/* 3D Translate */</span>
+<span class="code-keyword">.translate-3d</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">translateZ</span>(100px); <span class="code-comment">/* Move towards viewer */</span>
+    <span class="code-keyword">transform:</span> <span class="code-function">translate3d</span>(50px, 50px, 100px); <span class="code-comment">/* X, Y, Z */</span>
+}
+
+<span class="code-comment">/* Flip Card Effect (Real-world Example) */</span>
+<span class="code-keyword">.flip-card</span> {
+    <span class="code-keyword">width:</span> 300px;
+    <span class="code-keyword">height:</span> 200px;
+    <span class="code-keyword">perspective:</span> 1000px;
+}
+
+<span class="code-keyword">.flip-card-inner</span> {
+    <span class="code-keyword">position:</span> relative;
+    <span class="code-keyword">width:</span> 100%;
+    <span class="code-keyword">height:</span> 100%;
+    <span class="code-keyword">transition:</span> transform 0.6s;
+    <span class="code-keyword">transform-style:</span> preserve-3d;
+}
+
+<span class="code-keyword">.flip-card:hover .flip-card-inner</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">rotateY</span>(180deg);
+}
+
+<span class="code-keyword">.flip-card-front,
+.flip-card-back</span> {
+    <span class="code-keyword">position:</span> absolute;
+    <span class="code-keyword">width:</span> 100%;
+    <span class="code-keyword">height:</span> 100%;
+    <span class="code-keyword">backface-visibility:</span> hidden; <span class="code-comment">/* Hide back side */</span>
+}
+
+<span class="code-keyword">.flip-card-back</span> {
+    <span class="code-keyword">transform:</span> <span class="code-function">rotateY</span>(180deg);
+}
+
+<span class="code-comment">/* 3D Cube Example */</span>
+<span class="code-keyword">.cube-container</span> {
+    <span class="code-keyword">width:</span> 200px;
+    <span class="code-keyword">height:</span> 200px;
+    <span class="code-keyword">perspective:</span> 1000px;
+}
+
+<span class="code-keyword">.cube</span> {
+    <span class="code-keyword">width:</span> 100%;
+    <span class="code-keyword">height:</span> 100%;
+    <span class="code-keyword">position:</span> relative;
+    <span class="code-keyword">transform-style:</span> preserve-3d;
+    <span class="code-keyword">animation:</span> rotateCube 10s infinite linear;
+}
+
+<span class="code-keyword">.cube-face</span> {
+    <span class="code-keyword">position:</span> absolute;
+    <span class="code-keyword">width:</span> 200px;
+    <span class="code-keyword">height:</span> 200px;
+    <span class="code-keyword">border:</span> 2px solid <span class="code-string">#667eea</span>;
+    <span class="code-keyword">background:</span> <span class="code-function">rgba</span>(102, 126, 234, 0.1);
+    <span class="code-keyword">backdrop-filter:</span> <span class="code-function">blur</span>(10px);
+}
+
+<span class="code-keyword">.cube-face.front</span> { <span class="code-keyword">transform:</span> <span class="code-function">rotateY</span>(0deg) <span class="code-function">translateZ</span>(100px); }
+<span class="code-keyword">.cube-face.back</span> { <span class="code-keyword">transform:</span> <span class="code-function">rotateY</span>(180deg) <span class="code-function">translateZ</span>(100px); }
+<span class="code-keyword">.cube-face.left</span> { <span class="code-keyword">transform:</span> <span class="code-function">rotateY</span>(-90deg) <span class="code-function">translateZ</span>(100px); }
+<span class="code-keyword">.cube-face.right</span> { <span class="code-keyword">transform:</span> <span class="code-function">rotateY</span>(90deg) <span class="code-function">translateZ</span>(100px); }
+<span class="code-keyword">.cube-face.top</span> { <span class="code-keyword">transform:</span> <span class="code-function">rotateX</span>(90deg) <span class="code-function">translateZ</span>(100px); }
+<span class="code-keyword">.cube-face.bottom</span> { <span class="code-keyword">transform:</span> <span class="code-function">rotateX</span>(-90deg) <span class="code-function">translateZ</span>(100px); }
+
+<span class="code-keyword">@keyframes</span> <span class="code-function">rotateCube</span> {
+    to { <span class="code-keyword">transform:</span> <span class="code-function">rotateX</span>(360deg) <span class="code-function">rotateY</span>(360deg); }
+}
+                </div>
+
+                <div class="visual-output">
+                    <div class="output-label">👁️ Interactive Transform Demo</div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; padding: 20px; background: #0a0a0a; border-radius: 15px;">
+                        <div style="text-align: center;">
+                            <p style="color: white; margin-bottom: 10px;">Scale</p>
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); margin: 20px auto; border-radius: 10px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.5)'" onmouseout="this.style.transform='scale(1)'"></div>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="color: white; margin-bottom: 10px;">Rotate</p>
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #8b5cf6, #ec4899); margin: 20px auto; border-radius: 10px; transition: transform 0.3s;" onmouseover="this.style.transform='rotate(45deg)'" onmouseout="this.style.transform='rotate(0)'"></div>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="color: white; margin-bottom: 10px;">Skew</p>
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ec4899, #f59e0b); margin: 20px auto; border-radius: 10px; transition: transform 0.3s;" onmouseover="this.style.transform='skew(20deg)'" onmouseout="this.style.transform='skew(0)'"></div>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="color: white; margin-bottom: 10px;">3D Rotate</p>
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #f59e0b, #10b981); margin: 20px auto; border-radius: 10px; transition: transform 0.3s;" onmouseover="this.style.transform='rotateY(180deg)'" onmouseout="this.style.transform='rotateY(0)'"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h4>🔑 Transform Best Practices:</h4>
+                    <ul>
+                        <li><strong>Performance:</strong> transform and opacity are GPU-accelerated</li>
+                        <li><strong>Order Matters:</strong> transform: scale() rotate() ≠ rotate() scale()</li>
+                        <li><strong>Transform Origin:</strong> Default is center, change with transform-origin</li>
+                        <li><strong>3D Space:</strong> Always set perspective on parent for 3D effects</li>
+                        <li><strong>Backface Visibility:</strong> Hide flipped sides with backface-visibility: hidden</li>
+                    </ul>
+                </div>
+
+                <div class="practice-exercise">
+                    <h4>✏️ Practice Exercise:</h4>
+                    <ol style="margin-left: 25px;">
+                        <li>Create a card that scales up on hover</li>
+                        <li>Build a flip card with front and back content</li>
+                        <li>Create a rotating loader using transform</li>
+                        <li>Make a 3D button that depresses when clicked</li>
+                        <li>Build a photo gallery with 3D perspective</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW LESSON 12: LocalStorage -->
+        <div class="lesson page-break">
+            <div class="lesson-header">
+                <div class="lesson-number">LESSON 12 - NEW</div>
+                <div class="lesson-title">LocalStorage & Data Persistence</div>
+            </div>
+            
+            <div class="lesson-content">
+                <div class="concept">
+                    <h3>💾 What is LocalStorage?</h3>
+                    <p><strong>LocalStorage</strong> is a way to store data in the user's browser that persists even after they close the page. Think of it as a small database that lives in the browser.</p>
+                    <p style="margin-top: 10px;"><strong>Capacity:</strong> ~5-10MB per domain (varies by browser)</p>
+                    <p><strong>Data Type:</strong> Stores only strings (we'll learn to work around this)</p>
+                </div>
+
+                <div class="code-example">
+<span class="code-comment">// Basic LocalStorage Operations</span>
+
+<span class="code-comment">// 1. STORING DATA (setItem)</span>
+localStorage.<span class="code-function">setItem</span>(<span class="code-string">'username'</span>, <span class="code-string">'JohnDoe'</span>);
+localStorage.<span class="code-function">setItem</span>(<span class="code-string">'theme'</span>, <span class="code-string">'dark'</span>);
+localStorage.<span class="code-function">setItem</span>(<span class="code-string">'fontSize'</span>, <span class="code-string">'16'</span>);
+
+<span class="code-comment">// 2. RETRIEVING DATA (getItem)</span>
+<span class="code-keyword">const</span> username = localStorage.<span class="code-function">getItem</span>(<span class="code-string">'username'</span>);
+console.<span class="code-function">log</span>(username); <span class="code-comment">// Output: "JohnDoe"</span>
+
+<span class="code-comment">// 3. REMOVING DATA (removeItem)</span>
+localStorage.<span class="code-function">removeItem</span>(<span class="code-string">'fontSize'</span>);
+
+<span class="code-comment">// 4. CLEARING ALL DATA (clear)</span>
+localStorage.<span class="code-function">clear</span>(); <span class="code-comment">// Deletes everything!</span>
+
+<span class="code-comment">// 5. CHECKING IF KEY EXISTS</span>
+<span class="code-keyword">if</span> (localStorage.<span class="code-function">getItem</span>(<span class="code-string">'username'</span>) !== <span class="code-keyword">null</span>) {
+    console.<span class="code-function">log</span>(<span class="code-string">'Username exists!'</span>);
+}
+
+<span class="code-comment">/* WORKING WITH OBJECTS (Must stringify!) */</span>
+
+<span class="code-comment">// Storing an object</span>
+<span class="code-keyword">const</span> user = {
+    name: <span class="code-string">'John Doe'</span>,
+    email: <span class="code-string">'john@example.com'</span>,
+    age: 25,
+    preferences: {
+        theme: <span class="code-string">'dark'</span>,
+        language: <span class="code-string">'en'</span>
+    }
+};
+
+<span class="code-comment">// Convert object to JSON string</span>
+localStorage.<span class="code-function">setItem</span>(<span class="code-string">'user'</span>, JSON.<span class="code-function">stringify</span>(user));
+
+<span class="code-comment">// Retrieve and parse back to object</span>
+<span class="code-keyword">const</span> retrievedUser = JSON.<span class="code-function">parse</span>(localStorage.<span class="code-function">getItem</span>(<span class="code-string">'user'</span>));
+console.<span class="code-function">log</span>(retrievedUser.name); <span class="code-comment">// Output: "John Doe"</span>
+
+<span class="code-comment">/* STORING ARRAYS */</span>
+
+<span class="code-keyword">const</span> todoList = [
+    { id: 1, text: <span class="code-string">'Learn JavaScript'</span>, completed: <span class="code-keyword">false</span> },
+    { id: 2, text: <span class="code-string">'Build a project'</span>, completed: <span class="code-keyword">true</span> }
+];
+
+<span class="code-comment">// Store array</span>
+localStorage.<span class="code-function">setItem</span>(<span class="code-string">'todos'</span>, JSON.<span class="code-function">stringify</span>(todoList));
+
+<span class="code-comment">// Retrieve array</span>
+<span class="code-keyword">const</span> todos = JSON.<span class="code-function">parse</span>(localStorage.<span class="code-function">getItem</span>(<span class="code-string">'todos'</span>)) || [];
+
+<span class="code-comment">/* REAL-WORLD EXAMPLE: Theme Switcher */</span>
+
+<span class="code-keyword">function</span> <span class="code-function">setTheme</span>(theme) {
+    <span class="code-comment">// Save to localStorage</span>
+    localStorage.<span class="code-function">setItem</span>(<span class="code-string">'theme'</span>, theme);
+    
+    <span class="code-comment">// Apply to page</span>
+    document.body.className = theme;
+}
+
+<span class="code-keyword">function</span> <span class="code-function">loadTheme</span>() {
+    <span class="code-comment">// Load saved theme or default to 'light'</span>
+    <span class="code-keyword">const</span> savedTheme = localStorage.<span class="code-function">getItem</span>(<span class="code-string">'theme'</span>) || <span class="code-string">'light'</span>;
+    document.body.className = savedTheme;
+}
+
+<span class="code-comment">// Load theme when page loads</span>
+window.<span class="code-function">addEventListener</span>(<span class="code-string">'DOMContentLoaded'</span>, loadTheme);
+
+<span class="code-comment">/* REAL-WORLD EXAMPLE: Shopping Cart */</span>
+
+<span class="code-keyword">class</span> <span class="code-function">ShoppingCart</span> {
+    <span class="code-keyword">constructor</span>() {
+        <span class="code-keyword">this</span>.items = <span class="code-keyword">this</span>.<span class="code-function">load</span>();
+    }
+    
+    <span class="code-function">load</span>() {
+        <span class="code-keyword">const</span> cartData = localStorage.<span class="code-function">getItem</span>(<span class="code-string">'cart'</span>);
+        <span class="code-keyword">return</span> cartData ? JSON.<span class="code-function">parse</span>(cartData) : [];
+    }
+    
+    <span class="code-function">save</span>() {
+        localStorage.<span class="code-function">setItem</span>(<span class="code-string">'cart'</span>, JSON.<span class="code-function">stringify</span>(<span class="code-keyword">this</span>.items));
+    }
+    
+    <span class="code-function">addItem</span>(product) {
+        <span class="code-keyword">this</span>.items.<span class="code-function">push</span>(product);
+        <span class="code-keyword">this</span>.<span class="code-function">save</span>();
+    }
+    
+    <span class="code-function">removeItem</span>(productId) {
+        <span class="code-keyword">this</span>.items = <span class="code-keyword">this</span>.items.<span class="code-function">filter</span>(item => item.id !== productId);
+        <span class="code-keyword">this</span>.<span class="code-function">save</span>();
+    }
+    
+    <span class="code-function">clear</span>() {
+        <span class="code-keyword">this</span>.items = [];
+        localStorage.<span class="code-function">removeItem</span>(<span class="code-string">'cart'</span>);
+    }
+}
+
+<span class="code-comment">// Usage</span>
+<span class="code-keyword">const</span> cart = <span class="code-keyword">new</span> <span class="code-function">ShoppingCart</span>();
+cart.<span class="code-function">addItem</span>({ id: 1, name: <span class="code-string">'Laptop'</span>, price: 999 });
+
+<span class="code-comment">/* REAL-WORLD EXAMPLE: Auto-save Form */</span>
+
+<span class="code-keyword">const</span> form = document.<span class="code-function">getElementById</span>(<span class="code-string">'contactForm'</span>);
+<span class="code-keyword">const</span> inputs = form.<span class="code-function">querySelectorAll</span>(<span class="code-string">'input, textarea'</span>);
+
+<span class="code-comment">// Auto-save as user types</span>
+inputs.<span class="code-function">forEach</span>(input => {
+    <span class="code-comment">// Load saved value</span>
+    <span class="code-keyword">const</span> savedValue = localStorage.<span class="code-function">getItem</span>(<span class="code-string">`form_${input.name}`</span>);
+    <span class="code-keyword">if</span> (savedValue) {
+        input.value = savedValue;
+    }
+    
+    <span class="code-comment">// Save on input change</span>
+    input.<span class="code-function">addEventListener</span>(<span class="code-string">'input'</span>, () => {
+        localStorage.<span class="code-function">setItem</span>(<span class="code-string">`form_${input.name}`</span>, input.value);
+    });
+});
+
+<span class="code-comment">// Clear saved data on successful submit</span>
+form.<span class="code-function">addEventListener</span>(<span class="code-string">'submit'</span>, (e) => {
+    e.<span class="code-function">preventDefault</span>();
+    
+    <span class="code-comment">// Submit form...</span>
+    
+    <span class="code-comment">// Clear saved data</span>
+    inputs.<span class="code-function">forEach</span>(input => {
+        localStorage.<span class="code-function">removeItem</span>(<span class="code-string">`form_${input.name}`</span>);
+    });
+});
+
+<span class="code-comment">/* ERROR HANDLING */</span>
+
+<span class="code-keyword">function</span> <span class="code-function">safeSetItem</span>(key, value) {
+    <span class="code-keyword">try</span> {
+        localStorage.<span class="code-function">setItem</span>(key, value);
+        <span class="code-keyword">return true</span>;
+    } <span class="code-keyword">catch</span> (e) {
+        <span class="code-keyword">if</span> (e.name === <span class="code-string">'QuotaExceededError'</span>) {
+            console.<span class="code-function">error</span>(<span class="code-string">'LocalStorage is full!'</span>);
+        }
+        <span class="code-keyword">return false</span>;
+    }
+}
+                </div>
+
+                <div class="visual-output">
+                    <div class="output-label">👁️ Try It: LocalStorage Demo</div>
+                    <div style="background: #1a1a2e; padding: 30px; border-radius: 15px;">
+                        <div style="margin-bottom: 20px;">
+                            <label style="color: white; display: block; margin-bottom: 10px;">Your Name:</label>
+                            <input type="text" id="demoName" placeholder="Enter your name" style="width: 100%; padding: 12px; border-radius: 10px; border: 2px solid #667eea; background: rgba(255,255,255,0.1); color: white; font-size: 1rem;">
+                        </div>
+                        <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 15px;">Try typing your name, then refresh the page - it will still be there!</p>
+                        <button onclick="localStorage.removeItem('demoName'); document.getElementById('demoName').value = ''" style="padding: 10px 20px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; border-radius: 10px; cursor: pointer;">Clear Saved Name</button>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h4>🔑 LocalStorage Key Concepts:</h4>
+                    <ul>
+                        <li><strong>Persistent:</strong> Data survives browser restarts</li>
+                        <li><strong>Synchronous:</strong> Blocks code execution (use carefully)</li>
+                        <li><strong>String Only:</strong> Must use JSON.stringify() for objects</li>
+                        <li><strong>Domain Specific:</strong> Each domain has its own storage</li>
+                        <li><strong>No Expiration:</strong> Data stays until manually deleted</li>
+                        <li><strong>Size Limit:</strong> ~5-10MB per domain</li>
+                    </ul>
+                </div>
+
+                <div class="warning">
+                    <strong>⚠️ Security Warnings:</strong>
+                    <ul style="margin-left: 25px; margin-top: 10px;">
+                        <li>Never store passwords or sensitive data</li>
+                        <li>LocalStorage is not encrypted</li>
+                        <li>Vulnerable to XSS attacks</li>
+                        <li>Use sessionStorage for temporary data</li>
+                        <li>Consider IndexedDB for larger data</li>
+                    </ul>
+                </div>
+
+                <div class="practice-exercise">
+                    <h4>✏️ Practice Exercise:</h4>
+                    <ol style="margin-left: 25px;">
+                        <li>Create a notes app that saves notes to localStorage</li>
+                        <li>Build a dark/light theme switcher that remembers preference</li>
+                        <li>Make a todo list that persists after page refresh</li>
+                        <li>Create a form that auto-saves as user types</li>
+                        <li>Build a "recently viewed" products feature</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW LESSON 13: CSS Animations Mastery -->
+        <div class="lesson page-break">
+            <div class="lesson-header">
+                <div class="lesson-number">LESSON 13 - NEW</div>
+                <div class="lesson-title">CSS Animations & Keyframes Mastery</div>
+            </div>
+            
+            <div class="lesson-content">
+                <div class="concept">
+                    <h3>🎬 Mastering CSS Animations</h3>
+                    <p><strong>CSS Animations</strong> let you create complex, multi-step animations without JavaScript. They're smoother than JavaScript animations and hardware-accelerated.</p>
+                    <p style="margin-top: 10px;"><strong>Difference from Transitions:</strong> Transitions go from A→B. Animations can have multiple steps (A→B→C→D).</p>
+                </div>
+
+                <div class="code-example">
+<span class="code-comment">/* BASIC ANIMATION SYNTAX */</span>
+
+<span class="code-comment">/* 1. Define the animation with @keyframes */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">slideIn</span> {
+    <span class="code-keyword">from</span> {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateX</span>(-100%);
+        <span class="code-keyword">opacity:</span> 0;
+    }
+    <span class="code-keyword">to</span> {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateX</span>(0);
+        <span class="code-keyword">opacity:</span> 1;
+    }
+}
+
+<span class="code-comment">/* 2. Apply the animation to an element */</span>
+<span class="code-keyword">.slide-element</span> {
+    <span class="code-keyword">animation:</span> slideIn 1s ease-out;
+}
+
+<span class="code-comment">/* ANIMATION PROPERTIES BREAKDOWN */</span>
+<span class="code-keyword">.animated</span> {
+    <span class="code-keyword">animation-name:</span> slideIn; <span class="code-comment">/* Which @keyframes to use */</span>
+    <span class="code-keyword">animation-duration:</span> 2s; <span class="code-comment">/* How long */</span>
+    <span class="code-keyword">animation-timing-function:</span> ease; <span class="code-comment">/* Speed curve */</span>
+    <span class="code-keyword">animation-delay:</span> 0.5s; <span class="code-comment">/* Wait before starting */</span>
+    <span class="code-keyword">animation-iteration-count:</span> infinite; <span class="code-comment">/* How many times */</span>
+    <span class="code-keyword">animation-direction:</span> alternate; <span class="code-comment">/* Forward, reverse, alternate */</span>
+    <span class="code-keyword">animation-fill-mode:</span> forwards; <span class="code-comment">/* What happens after */</span>
+    <span class="code-keyword">animation-play-state:</span> running; <span class="code-comment">/* running or paused */</span>
+    
+    <span class="code-comment">/* Shorthand (all in one line): */</span>
+    <span class="code-keyword">animation:</span> slideIn 2s ease 0.5s infinite alternate forwards;
+}
+
+<span class="code-comment">/* MULTI-STEP ANIMATIONS (using percentages) */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">complexMove</span> {
+    0% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translate</span>(0, 0);
+        <span class="code-keyword">background:</span> <span class="code-string">#3b82f6</span>;
+    }
+    25% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translate</span>(100px, 0);
+        <span class="code-keyword">background:</span> <span class="code-string">#8b5cf6</span>;
+    }
+    50% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translate</span>(100px, 100px);
+        <span class="code-keyword">background:</span> <span class="code-string">#ec4899</span>;
+    }
+    75% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translate</span>(0, 100px);
+        <span class="code-keyword">background:</span> <span class="code-string">#f59e0b</span>;
+    }
+    100% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translate</span>(0, 0);
+        <span class="code-keyword">background:</span> <span class="code-string">#3b82f6</span>;
+    }
+}
+
+<span class="code-comment">/* POPULAR ANIMATION EXAMPLES */</span>
+
+<span class="code-comment">/* Pulse Effect */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">pulse</span> {
+    0%, 100% {
+        <span class="code-keyword">transform:</span> <span class="code-function">scale</span>(1);
+    }
+    50% {
+        <span class="code-keyword">transform:</span> <span class="code-function">scale</span>(1.1);
+    }
+}
+
+<span class="code-keyword">.pulse-button</span> {
+    <span class="code-keyword">animation:</span> pulse 2s ease-in-out infinite;
+}
+
+<span class="code-comment">/* Bounce Effect */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">bounce</span> {
+    0%, 20%, 50%, 80%, 100% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateY</span>(0);
+    }
+    40% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateY</span>(-30px);
+    }
+    60% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateY</span>(-15px);
+    }
+}
+
+<span class="code-comment">/* Shake Effect */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">shake</span> {
+    0%, 100% { <span class="code-keyword">transform:</span> <span class="code-function">translateX</span>(0); }
+    10%, 30%, 50%, 70%, 90% { <span class="code-keyword">transform:</span> <span class="code-function">translateX</span>(-10px); }
+    20%, 40%, 60%, 80% { <span class="code-keyword">transform:</span> <span class="code-function">translateX</span>(10px); }
+}
+
+<span class="code-comment">/* Fade In + Scale */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">fadeInScale</span> {
+    from {
+        <span class="code-keyword">opacity:</span> 0;
+        <span class="code-keyword">transform:</span> <span class="code-function">scale</span>(0.5);
+    }
+    to {
+        <span class="code-keyword">opacity:</span> 1;
+        <span class="code-keyword">transform:</span> <span class="code-function">scale</span>(1);
+    }
+}
+
+<span class="code-comment">/* Rotating Loader */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">spin</span> {
+    from { <span class="code-keyword">transform:</span> <span class="code-function">rotate</span>(0deg); }
+    to { <span class="code-keyword">transform:</span> <span class="code-function">rotate</span>(360deg); }
+}
+
+<span class="code-keyword">.loader</span> {
+    <span class="code-keyword">border:</span> 4px solid <span class="code-string">#f3f3f3</span>;
+    <span class="code-keyword">border-top:</span> 4px solid <span class="code-string">#667eea</span>;
+    <span class="code-keyword">border-radius:</span> 50%;
+    <span class="code-keyword">width:</span> 40px;
+    <span class="code-keyword">height:</span> 40px;
+    <span class="code-keyword">animation:</span> spin 1s linear infinite;
+}
+
+<span class="code-comment">/* Gradient Animation */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">gradientShift</span> {
+    0% { <span class="code-keyword">background-position:</span> 0% 50%; }
+    50% { <span class="code-keyword">background-position:</span> 100% 50%; }
+    100% { <span class="code-keyword">background-position:</span> 0% 50%; }
+}
+
+<span class="code-keyword">.animated-gradient</span> {
+    <span class="code-keyword">background:</span> <span class="code-function">linear-gradient</span>(270deg, <span class="code-string">#667eea</span>, <span class="code-string">#764ba2</span>, <span class="code-string">#f093fb</span>);
+    <span class="code-keyword">background-size:</span> 400% 400%;
+    <span class="code-keyword">animation:</span> gradientShift 3s ease infinite;
+}
+
+<span class="code-comment">/* Typing Effect */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">typing</span> {
+    from { <span class="code-keyword">width:</span> 0; }
+    to { <span class="code-keyword">width:</span> 100%; }
+}
+
+<span class="code-keyword">@keyframes</span> <span class="code-function">blinkCursor</span> {
+    50% { <span class="code-keyword">border-color:</span> transparent; }
+}
+
+<span class="code-keyword">.typewriter</span> {
+    <span class="code-keyword">overflow:</span> hidden;
+    <span class="code-keyword">border-right:</span> 3px solid;
+    <span class="code-keyword">white-space:</span> nowrap;
+    <span class="code-keyword">animation:</span> 
+        typing 3.5s steps(40, end),
+        blinkCursor 0.75s step-end infinite;
+}
+
+<span class="code-comment">/* Floating Animation */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">float</span> {
+    0%, 100% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateY</span>(0px);
+    }
+    50% {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateY</span>(-20px);
+    }
+}
+
+<span class="code-keyword">.floating</span> {
+    <span class="code-keyword">animation:</span> float 3s ease-in-out infinite;
+}
+
+<span class="code-comment">/* ADVANCED: Multiple Animations */</span>
+<span class="code-keyword">.multi-animated</span> {
+    <span class="code-keyword">animation:</span> 
+        pulse 2s ease-in-out infinite,
+        float 3s ease-in-out infinite,
+        gradientShift 5s ease infinite;
+}
+
+<span class="code-comment">/* PERFORMANCE OPTIMIZATION */</span>
+<span class="code-keyword">.optimized-animation</span> {
+    <span class="code-keyword">will-change:</span> transform, opacity; <span class="code-comment">/* Hint to browser */</span>
+    <span class="code-keyword">animation:</span> slideIn 1s ease-out forwards;
+}
+
+<span class="code-comment">/* Only animate transform and opacity for 60fps */</span>
+<span class="code-keyword">@keyframes</span> <span class="code-function">performant</span> {
+    from {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateX</span>(-100%);
+        <span class="code-keyword">opacity:</span> 0;
+    }
+    to {
+        <span class="code-keyword">transform:</span> <span class="code-function">translateX</span>(0);
+        <span class="code-keyword">opacity:</span> 1;
+    }
+}
+                </div>
+
+                <div class="visual-output">
+                    <div class="output-label">👁️ Animation Showcase</div>
+                    <div style="background: #0a0a0a; padding: 40px; border-radius: 15px; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px;">
+                        <div style="text-align: center;">
+                            <p style="color: white; margin-bottom: 15px; font-size: 0.9rem;">Pulse</p>
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); margin: 0 auto; border-radius: 10px; animation: pulse 2s ease-in-out infinite;"></div>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="color: white; margin-bottom: 15px; font-size: 0.9rem;">Spin</p>
+                            <div style="width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #667eea; border-radius: 50%; margin: 10px auto; animation: spin 1s linear infinite;"></div>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="color: white; margin-bottom: 15px; font-size: 0.9rem;">Float</p>
+                            <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ec4899, #f59e0b); margin: 0 auto; border-radius: 10px; animation: float 3s ease-in-out infinite;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="key-points">
+                    <h4>🔑 Animation Best Practices:</h4>
+                    <ul>
+                        <li><strong>Use transform & opacity:</strong> These are GPU-accelerated</li>
+                        <li><strong>Avoid animating:</strong> width, height, top, left, margin (causes reflow)</li>
+                        <li><strong>will-change:</strong> Tells browser to optimize ahead of time</li>
+                        <li><strong>Keep it subtle:</strong> Too much animation is distracting</li>
+                        <li><strong>Test performance:</strong> Use browser DevTools to check FPS</li>
+                        <li><strong>Provide controls:</strong> Let users pause animations (accessibility)</li>
+                    </ul>
+                </div>
+
+                <div class="tip">
+                    <strong>💡 Teacher's Tip:</strong> Use animation-fill-mode: forwards to keep the final state after animation ends. Use animation-play-state: paused/running to control animations with JavaScript!
+                </div>
+
+                <div class="practice-exercise">
+                    <h4>✏️ Practice Exercise:</h4>
+                    <ol style="margin-left: 25px;">
+                        <li>Create a loading spinner with rotation animation</li>
+                        <li>Build a notification that slides in from the right</li>
+                        <li>Make a "heartbeat" animation for a like button</li>
+                        <li>Create a text typing effect</li>
+                        <li>Build an animated background gradient</li>
+                        <li>Make a bouncing ball animation</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW LESSON 14: Promises & Async -->
+        <div class="lesson page-break">
+            <div class="lesson-header">
+                <div class="lesson-number">LESSON 14 - NEW</div>
+                <div class="lesson-title">JavaScript Promises & Async Programming</div>
+            </div>
+            
+            <div class="lesson-content">
+                <div class="concept">
+                    <h3>⚡ Understanding Asynchronous JavaScript</h3>
+                    <p><strong>Asynchronous code</strong> doesn't block the program. It allows other code to run while waiting for slow operations (API calls, file reading, timers).</p>
+                    <p style="margin-top: 10px;"><strong>Real-world analogy:</strong> Ordering food at a restaurant. You don't stand at the counter waiting - you sit down, and they bring it when ready.</p>
+                </div>
+
+                <div class="code-example">
+<span class="code-comment">/* PROBLEM: Synchronous (Blocking) Code */</span>
+
+console.<span class="code-function">log</span>(<span class="code-string">'Start'</span>);
+
+<span class="code-comment">// This blocks for 3 seconds (BAD!)</span>
+<span class="code-keyword">function</span> <span class="code-function">waitSync</span>() {
+    <span class="code-keyword">const</span> start = Date.<span class="code-function">now</span>();
+    <span class="code-keyword">while</span> (Date.<span class="code-function">now</span>() - start < 3000) {}
+}
+
+<span class="code-function">waitSync</span>();
+console.<span class="code-function">log</span>(<span class="code-string">'End'</span>); <span class="code-comment">// Runs after 3 seconds</span>
+
+<span class="code-comment">/* SOLUTION 1: Callbacks (Old Way) */</span>
+
+console.<span class="code-function">log</span>(<span class="code-string">'Start'</span>);
+
+<span class="code-function">setTimeout</span>(() => {
+    console.<span class="code-function">log</span>(<span class="code-string">'After 3 seconds'</span>);
+}, 3000);
+
+console.<span class="code-function">log</span>(<span class="code-string">'End'</span>); <span class="code-comment">// Runs immediately!</span>
+
+<span class="code-comment">/* SOLUTION 2: Promises (Modern Way) */</span>
+
+<span class="code-comment">// Creating a Promise</span>
+<span class="code-keyword">const</span> myPromise = <span class="code-keyword">new</span> <span class="code-function">Promise</span>((resolve, reject) => {
+    <span class="code-comment">// Simulate async operation</span>
+    <span class="code-function">setTimeout</span>(() => {
+        <span class="code-keyword">const</span> success = <span class="code-keyword">true</span>;
+        
+        <span class="code-keyword">if</span> (success) {
+            <span class="code-function">resolve</span>(<span class="code-string">'Operation successful!'</span>);
+        } <span class="code-keyword">else</span> {
+            <span class="code-function">reject</span>(<span class="code-string">'Operation failed!'</span>);
+        }
+    }, 2000);
+});
+
+<span class="code-comment">// Using the Promise</span>
+myPromise
+    .<span class="code-function">then</span>(result => {
+        console.<span class="code-function">log</span>(result); <span class="code-comment">// 'Operation successful!'</span>
+    })
+    .<span class="code-function">catch</span>(error => {
+        console.<span class="code-function">error</span>(error);
+    });
+
+<span class="code-comment">/* PROMISE STATES */</span>
+<span class="code-comment">// 1. Pending - initial state, operation ongoing</span>
+<span class="code-comment">// 2. Fulfilled - operation completed successfully (resolve called)</span>
+<span class="code-comment">// 3. Rejected - operation failed (reject called)</span>
+
+<span class="code-comment">/* CHAINING PROMISES */</span>
+
+<span class="code-function">fetchUser</span>()
+    .<span class="code-function">then</span>(user => {
+        console.<span class="code-function">log</span>(<span class="code-string">'Got user:'</span>, user);
+        <span class="code-keyword">return</span> <span class="code-function">fetchPosts</span>(user.id);
+    })
+    .<span class="code-function">then</span>(posts => {
+        console.<span class="code-function">log</span>(<span class="code-string">'Got posts:'</span>, posts);
+        <span class="code-keyword">return</span> <span class="code-function">fetchComments</span>(posts[0].id);
+    })
+    .<span class="code-function">then</span>(comments => {
+        console.<span class="code-function">log</span>(<span class="code-string">'Got comments:'</span>, comments);
+    })
+    .<span class="code-function">catch</span>(error => {
+        console.<span class="code-function">error</span>(<span class="code-string">'Error occurred:'</span>, error);
+    });
+
+<span class="code-comment">/* SOLUTION 3: Async/Await (Best Way!) */</span>
+
+<span class="code-keyword">async function</span> <span class="code-function">fetchData</span>() {
+    <span class="code-keyword">try</span> {
+        <span class="code-keyword">const</span> user = <span class="code-keyword">await</span> <span class="code-function">fetchUser</span>();
+        console.<span class="code-function">log</span>(<span class="code-string">'Got user:'</span>, user);
+        
+        <span class="code-keyword">const</span> posts = <span class="code-keyword">await</span> <span class="code-function">fetchPosts</span>(user.id);
+        console.<span class="code-function">log</span>(<span class="code-string">'Got posts:'</span>, posts);
+        
+        <span class="code-keyword">const</span> comments = <span class="code-keyword">await</span> <span class="code-function">fetchComments</span>(posts[0].id);
+        console.<span class="code-function">log</span>(<span class="code-string">'Got comments:'</span>, comments);
+        
+    } <span class="code-keyword">catch</span> (error) {
+        console.<span class="code-function">error</span>(<span class="code-string">'Error occurred:'</span>, error);
+    }
+}
+
+<span class="code-function">fetchData</span>();
+
+<span class="code-comment">/* REAL API EXAMPLE: Fetching Data */</span>
+
+<span class="code-comment">// Method 1: Using .then()</span>
+<span class="code-function">fetch</span>(<span class="code-string">'https://api.example.com/users'</span>)
+    .<span class="code-function">then</span>(response => response.<span class="code-function">json</span>())
+    .<span class="code-function">then</span>(data => {
+        console.<span class="code-function">log</span>(data);
+    })
+    .<span class="code-function">catch</span>(error => {
+        console.<span class="code-function">error</span>(error);
+    });
+
+<span class="code-comment">// Method 2: Using async/await (RECOMMENDED)</span>
+<span class="code-keyword">async function</span> <span class="code-function">getUsers</span>() {
+    <span class="code-keyword">try</span> {
+        <span class="code-keyword">const</span> response = <span class="code-keyword">await</span> <span class="code-function">fetch</span>(<span class="code-string">'https://api.example.com/users'</span>);
+        
+        <span class="code-keyword">if</span> (!response.ok) {
+            <span class="code-keyword">throw new</span> <span class="code-function">Error</span>(<span class="code-string">`HTTP error! status: <span class="code-keyword">${</span><response class="status"></response>

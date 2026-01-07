@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Website Design Tutorial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f1e;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.6);
+        }
+
+        .lesson {
+            background: #1a1a2e;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid #2d2d44;
+        }
+
+        .lesson-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .lesson h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+
+        .definition {
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .definition strong {
+            color: #667eea;
+            font-size: 1.2rem;
+        }
+
+        .code-section {
+            margin: 30px 0;
+        }
+
+        .code-section h3 {
+            color: #10b981;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .code-block {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .comment { color: #6a9955; }
+        .tag { color: #569cd6; }
+        .attribute { color: #9cdcfe; }
+        .value { color: #ce9178; }
+        .keyword { color: #c586c0; }
+        .property { color: #9cdcfe; }
+
+        .output-section {
+            margin: 30px 0;
+        }
+
+        .output-label {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .output-box {
+            background: white;
+            border: 3px solid #f59e0b;
+            border-radius: 0 10px 10px 10px;
+            padding: 30px;
+            min-height: 200px;
+        }
+
+        /* Demo Styles for Examples */
+        .demo-gradient-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 150px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .demo-glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .demo-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: #333;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .demo-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .demo-animation {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .demo-grid-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .demo-navbar {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .demo-nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .demo-nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .demo-nav-links a:hover {
+            color: #667eea;
+        }
+
+        .tips-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid #10b981;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .tips-box strong {
+            color: #10b981;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .lesson {
+                padding: 20px;
+            }
+            
+            .download-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="downloadPage()">⬇️ Download Tutorial</button>
+
+    <div class="container">
+        <div class="header">
+            <h1>🎨 Modern Website Design Tutorial</h1>
+            <p>Learn how to make attractive, attention-grabbing websites in 2024</p>
+        </div>
+
+        <!-- LESSON 1: Gradients -->
+        <div class="lesson">
+            <span class="lesson-number">Lesson 1</span>
+            <h2>🌈 Vibrant Gradients</h2>
+            
+            <div class="definition">
+                <strong>What is it?</strong><br>
+                Smooth color transitions that add depth and modern look to your design.
+            </div>
+
+            <div class="code-section">
+                <h3>📝 Code:</h3>
+                <div class="code-block">
+<pre><span class="tag">.gradient-box</span> {
+    <span class="property">background</span>: <span class="keyword">linear-gradient</span>(
+        <span class="value">135deg</span>,
+        <span class="value">#667eea</span> <span class="value">0%</span>,
+        <span class="value">#764ba2</span> <span class="value">100%</span>
+    );
+    <span class="property">border-radius</span>: <span class="value">15px</span>;
+    <span class="property">padding</span>: <span class="value">30px</span>;
+}</pre>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-label">👁️ Visual Output</div>
+                <div class="output-box">
+                    <div class="demo-gradient-1">Beautiful Gradient</div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>💡 Pro Tip:</strong> Use gradients on headers, buttons, and backgrounds. Choose colors that complement each other!
+            </div>
+        </div>
+
+        <!-- LESSON 2: Glassmorphism -->
+        <div class="lesson">
+            <span class="lesson-number">Lesson 2</span>
+            <h2>🪟 Glassmorphism Effect</h2>
+            
+            <div class="definition">
+                <strong>What is it?</strong><br>
+                Frosted glass effect with transparency and blur - very trendy in modern design.
+            </div>
+
+            <div class="code-section">
+                <h3>📝 Code:</h3>
+                <div class="code-block">
+<pre><span class="tag">.glass-card</span> {
+    <span class="property">background</span>: <span class="keyword">rgba</span>(<span class="value">255, 255, 255, 0.1</span>);
+    <span class="property">backdrop-filter</span>: <span class="keyword">blur</span>(<span class="value">10px</span>);
+    <span class="property">border</span>: <span class="value">1px solid</span> <span class="keyword">rgba</span>(<span class="value">255, 255, 255, 0.2</span>);
+    <span class="property">border-radius</span>: <span class="value">20px</span>;
+    <span class="property">padding</span>: <span class="value">30px</span>;
+    <span class="property">box-shadow</span>: <span class="value">0 8px 32px</span> <span class="keyword">rgba</span>(<span class="value">0, 0, 0, 0.1</span>);
+}</pre>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-label">👁️ Visual Output</div>
+                <div class="output-box" style="background: linear-gradient(135deg, #667eea, #764ba2); padding: 50px;">
+                    <div class="demo-glassmorphism">
+                        <h3 style="color: white; margin-bottom: 10px;">Glassmorphism Card</h3>
+                        <p style="color: rgba(255,255,255,0.8);">Notice the frosted glass effect with blur</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>💡 Pro Tip:</strong> Works best on colorful backgrounds. Perfect for modern cards and modals!
+            </div>
+        </div>
+
+        <!-- LESSON 3: Hover Effects -->
+        <div class="lesson">
+            <span class="lesson-number">Lesson 3</span>
+            <h2>✨ Smooth Hover Effects</h2>
+            
+            <div class="definition">
+                <strong>What is it?</strong><br>
+                Interactive animations when users hover over elements - makes your site feel alive!
+            </div>
+
+            <div class="code-section">
+                <h3>📝 Code:</h3>
+                <div class="code-block">
+<pre><span class="tag">.card</span> {
+    <span class="property">transition</span>: <span class="value">transform 0.3s ease, box-shadow 0.3s ease</span>;
+}
+
+<span class="tag">.card:hover</span> {
+    <span class="property">transform</span>: <span class="keyword">translateY</span>(<span class="value">-10px</span>);
+    <span class="property">box-shadow</span>: <span class="value">0 30px 80px</span> <span class="keyword">rgba</span>(<span class="value">102, 126, 234, 0.4</span>);
+}</pre>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-label">👁️ Visual Output (Hover over card)</div>
+                <div class="output-box">
+                    <div class="demo-card">
+                        <h3 style="color: #667eea; margin-bottom: 10px;">Interactive Card</h3>
+                        <p style="color: #666;">Hover over me to see the magic! ✨</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>💡 Pro Tip:</strong> Use on cards, buttons, and images. Keep animations smooth with 0.3s duration!
+            </div>
+        </div>
+
+        <!-- LESSON 4: Modern Buttons -->
+        <div class="lesson">
+            <span class="lesson-number">Lesson 4</span>
+            <h2>🔘 Eye-Catching Buttons</h2>
+            
+            <div class="definition">
+                <strong>What is it?</strong><br>
+                Buttons with gradients, shadows, and hover effects that demand attention.
+            </div>
+
+            <div class="code-section">
+                <h3>📝 Code:</h3>
+                <div class="code-block">
+<pre><span class="tag">.modern-button</span> {
+    <span class="property">background</span>: <span class="keyword">linear-gradient</span>(<span class="value">135deg, #667eea, #764ba2</span>);
+    <span class="property">color</span>: <span class="value">white</span>;
+    <span class="property">padding</span>: <span class="value">15px 40px</span>;
+    <span class="property">border</span>: <span class="value">none</span>;
+    <span class="property">border-radius</span>: <span class="value">50px</span>;
+    <span class="property">font-weight</span>: <span class="value">bold</span>;
+    <span class="property">cursor</span>: <span class="value">pointer</span>;
+    <span class="property">box-shadow</span>: <span class="value">0 10px 30px</span> <span class="keyword">rgba</span>(<span class="value">102, 126, 234, 0.4</span>);
+    <span class="property">transition</span>: <span class="value">all 0.3s ease</span>;
+}
+
+<span class="tag">.modern-button:hover</span> {
+    <span class="property">transform</span>: <span class="keyword">scale</span>(<span class="value">1.05</span>);
+    <span class="property">box-shadow</span>: <span class="value">0 15px 40px</span> <span class="keyword">rgba</span>(<span class="value">102, 126, 234, 0.6</span>);
+}</pre>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-label">👁️ Visual Output (Hover to see effect)</div>
+                <div class="output-box" style="text-align: center;">
+                    <button class="demo-button">Click Me! 🚀</button>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>💡 Pro Tip:</strong> Round buttons (border-radius: 50px) look more modern than square ones!
+            </div>
+        </div>
+
+        <!-- LESSON 5: Animations -->
+        <div class="lesson">
+            <span class="lesson-number">Lesson 5</span>
+            <h2>🎬 Smooth Animations</h2>
+            
+            <div class="definition">
+                <strong>What is it?</strong><br>
+                Moving elements that catch attention and guide users' eyes.
+            </div>
+
+            <div class="code-section">
+                <h3>📝 Code:</h3>
+                <div class="code-block">
+<pre><span class="comment">/* Define the animation */</span>
+<span class="keyword">@keyframes</span> <span class="tag">float</span> {
+    <span class="value">0%, 100%</span> {
+        <span class="property">transform</span>: <span class="keyword">translateY</span>(<span class="value">0px</span>);
+    }
+    <span class="value">50%</span> {
+        <span class="property">transform</span>: <span class="keyword">translateY</span>(<span class="value">-20px</span>);
+    }
+}
+
+<span class="comment">/* Apply to element */</span>
+<span class="tag">.floating-box</span> {
+    <span class="property">animation</span>: <span class="value">float 3s ease-in-out infinite</span>;
+}</pre>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-label">👁️ Visual Output (Watch it float)</div>
+                <div class="output-box" style="text-align: center; padding: 60px;">
+                    <div class="demo-animation"></div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>💡 Pro Tip:</strong> Use animations sparingly! Too much movement can be distracting.
+            </div>
+        </div>
+
+        <!-- LESSON 6: Responsive Grid -->
+        <div class="lesson">
+            <span class="lesson-number">Lesson 6</span>
+            <h2>📱 Responsive Grid Layout</h2>
+            
+            <div class="definition">
+                <strong>What is it?</strong><br>
+                Automatically arranges items in columns that adapt to screen size.
+            </div>
+
+            <div class="code-section">
+                <h3>📝 Code:</h3>
+                <div class="code-block">
+<pre><span class="tag">.grid-container</span> {
+    <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="keyword">repeat</span>(
+        <span class="keyword">auto-fit</span>,
+        <span class="keyword">minmax</span>(<span class="value">200px, 1fr</span>)
+    );
+    <span class="property">gap</span>: <span class="value">20px</span>;
+}</pre>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-label">👁️ Visual Output (Resize window to see)</div>
+                <div class="output-box">
+                    <div class="demo-grid">
+                        <div class="demo-grid-item">Item 1</div>
+                        <div class="demo-grid-item">Item 2</div>
+                        <div class="demo-grid-item">Item 3</div>
+                        <div class="demo-grid-item">Item 4</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>💡 Pro Tip:</strong> Grid automatically adjusts columns based on screen width. Perfect for cards!
+            </div>
+        </div>
+
+        <!-- LESSON 7: Modern Navbar -->
+        <div class="lesson">
+            <span class="lesson-number">Lesson 7</span>
+            <h2>🧭 Sleek Navigation Bar</h2>
+            
+            <div class="definition">
+                <strong>What is it?</strong><br>
+                Modern navbar with blur effect and smooth hover transitions.
+            </div>
+
+            <div class="code-section">
+                <h3>📝 Code:</h3>
+                <div class="code-block">
+<pre><span class="tag">.navbar</span> {
+    <span class="property">background</span>: <span class="keyword">rgba</span>(<span class="value">26, 26, 46, 0.95</span>);
+    <span class="property">backdrop-filter</span>: <span class="keyword">blur</span>(<span class="value">10px</span>);
+    <span class="property">display</span>: <span class="value">flex</span>;
+    <span class="property">justify-content</span>: <span class="value">space-between</span>;
+    <span class="property">padding</span>: <span class="value">20px 40px</span>;
+    <span class="property">border-radius</span>: <span class="value">15px</span>;
+}
+
+<span class="tag">.nav-links a:hover</span> {
+    <span class="property">color</span>: <span class="value">#667eea</span>;
+}</pre>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="output-label">👁️ Visual Output</div>
+                <div class="output-box" style="background: #0f0f1e; padding: 20px;">
+                    <div class="demo-navbar">
+                        <div style="font-weight: bold; font-size: 1.2rem;">Logo</div>
+                        <ul class="demo-nav-links">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-box">
+                <strong>💡 Pro Tip:</strong> Semi-transparent navbar with blur looks modern and keeps content visible!
+            </div>
+        </div>
+
+        <!-- FINAL SUMMARY -->
+        <div class="lesson" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));">
+            <span class="lesson-number">Summary</span>
+            <h2>🎯 Key Takeaways</h2>
+            
+            <div class="tips-box">
+                <strong>✅ Modern Website Checklist:</strong><br><br>
+                1️⃣ Use vibrant gradients instead of flat colors<br>
+                2️⃣ Add glassmorphism for depth and elegance<br>
+                3️⃣ Include smooth hover effects on interactive elements<br>
+                4️⃣ Design eye-catching buttons with shadows<br>
+                5️⃣ Add subtle animations (not too much!)<br>
+                6️⃣ Use responsive grid layouts<br>
+                7️⃣ Create modern navigation with blur effects<br>
+                8️⃣ Round corners everywhere (border-radius)<br>
+                9️⃣ Add proper spacing and whitespace<br>
+                🔟 Test on mobile devices!
+            </div>
+
+            <div class="definition">
+                <strong>Remember:</strong> Modern design is about balance - use these techniques together, but don't overdo it. Less is often more!
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function downloadPage() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(blob);
+            downloadLink.download = 'modern-web-design-tutorial.html';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(downloadLink.href);
+            alert('✅ Tutorial downloaded successfully!\n\nOpen "modern-web-design-tutorial.html" in your browser.');
+        }
+    </script>
+</body>
+</html>
